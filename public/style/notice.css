@@ -1,0 +1,161 @@
+@charset "utf-8";
+
+.notice {
+    margin-top: 80px;
+}
+
+
+.notice .flex {
+    display: flex;
+    align-items: baseline;
+}
+
+.notice .inner {
+    width: 1280px;
+    margin: 0 auto;
+    position: relative;
+    display: flex   ;
+}
+
+.notice .direct {
+    width: 65.82%;
+    margin-right: 2.5%;
+}
+
+.notice .direct h4, .notice_box .flex h4 {
+    font-size: 20px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+}
+.notice .direct .flex p, .notice_box .flex p {
+    color: #999;
+}
+
+.direct .direct_box {
+    display: flex;
+    width: 100%;
+    height: 180px;
+    text-align: center;
+    border: 1px solid #e5e5e5;
+    border-radius: 20px;
+    align-items: center;
+}
+
+.direct .direct_box li {
+    width: 25%;
+}
+
+.direct .direct_box li a {
+    position:relative;
+}
+.direct .direct_box li a::before {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left:0;
+
+    content: "";
+    display: block;
+    width: 1px;
+    height: 80%;
+    background-color: #e5e5e5;
+}
+
+.direct .direct_box li:first-child a::before {
+    display: none;
+}
+
+.direct .direct_box li .img-wrap {
+    width: 85px;
+    height: 85px;
+    display: inline-block;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    transition: all 0.3s;
+}
+
+.direct .direct_box li:nth-child(1) .img-wrap {
+    background: url('../img/direct03.png') no-repeat;
+    background-position: center;
+    
+    background-color: #e3effc;
+}
+.direct .direct_box li:nth-child(2) .img-wrap {
+    background: url('../img/direct02.png') no-repeat;
+    background-position: center;
+    
+    background-color: #e3effc;
+}
+.direct .direct_box li:nth-child(3) .img-wrap {
+    background: url('../img/direct01.png') no-repeat;
+    background-position: 60% 50%;
+    
+    background-color: #e3effc;
+}
+.direct .direct_box li:nth-child(4) .img-wrap {
+    background: url('../img/direct04.png') no-repeat;
+    background-position: center;
+    
+    background-color: #e3effc;
+}
+.direct .direct_box li:hover .img-wrap {
+    background-color: #c4dbf5;
+}
+
+
+.direct .direct_box li a p {
+    font-size: 18px;
+}
+
+.notice_box .flex {
+    position: relative;
+}
+
+.notice_box .flex a {
+    position: absolute;
+    right: 0;
+
+    transition: all 0.3s;
+}
+.notice_box .flex a:hover {
+    font-size: 17px;
+}
+.notice .notice_box {
+    width: 31.66%;
+}
+
+.notice_list {
+    border-radius: 15px;
+    box-sizing: border-box;
+    padding: 10px;
+
+    transition: all 0.3s;
+}
+
+.notice_list:hover {
+    box-shadow: 0px 0px 10px rgba(0,76,111,0.2);
+}
+.notice_box .notice_list h5{
+    font-size: 22px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.notice_box .notice_list p {
+    line-height: 24px;
+    font-size: 16px;
+    color: #999;
+    margin-bottom: 10px;
+}
+.notice_box .flex h4 {
+    margin-left: 10px;
+}
+
+
+
+.mini_logo {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+}

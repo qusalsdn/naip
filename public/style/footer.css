@@ -1,0 +1,111 @@
+@charset "utf-8";
+
+footer {
+    margin-top: 0px;
+    width: 100%;
+    height: 180px;
+    background-color: #31323c;
+}
+
+footer .inner {
+    width :1280px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.footer_top {
+    width: 100%;
+    height: 60px;
+}
+
+.footer_top .footer_menu {
+    display: flex;
+    
+    height: 60px;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.footer_top .footer_menu ul li {
+    float : left;
+    color: #f1f1f1;
+    margin-right: 40px;
+}
+.footer_top .footer_menu ul li  a {
+    color: #f1f1f1;
+    font-size: 15px;
+}
+
+.footer_top .footer_menu >a {
+    color: #76c3c5;
+}
+
+.footer_top .footer_menu a:hover {
+    color: #76c3c5;
+}
+
+.footer_bottom {
+    display: flex;
+    height: 100px;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer_bottom img {
+    height: 35px;
+    width: auto;
+}
+
+.footer_bottom .copyright {
+    color: #f1f1f1;
+    font-size: 15px;
+    margin-right: 50px;
+    width: 1200px;
+}
+
+.footer_bottom .copyright address {
+    margin-bottom: 10px;
+}
+
+.footer_bottom .call {
+    opacity: 0; 
+    /* 임시로 */
+    font-size: 14px;
+    color: #f1f1f1;
+    margin-right: 90px;
+}
+.footer_bottom .call p.time {
+    margin-bottom: 10px;
+}
+
+.footer_bottom .call p.tel {
+    font-size: 20px;
+}   
+
+.footer_bottom .family-site select {
+    width: 240px;
+    height: 50px;
+    background-color: transparent;
+    color: #fff;
+    font-family: "Pretendard-Medium";
+    display: inline;
+    padding-left: 10px;
+    font-size: 15px;
+
+    cursor: pointer;
+}
+.footer_bottom .family-site select.link01 {
+    margin-right: 14px;
+    opacity: 0;
+}
+
+
+.footer_bottom .family-site select.link02 {
+    position: absolute;
+    right: 0;
+}
+.footer_bottom .family-site option {
+    padding: 20px 0px;
+    color: #333;
+}

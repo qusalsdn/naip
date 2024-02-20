@@ -1,0 +1,716 @@
+@charset "utf-8";
+#userinfo .userinfo_wrap .tit_box {
+    margin-bottom: 80px;
+}
+
+#userinfo .userinfo_wrap .tit_box h2{
+    margin-top: 100px;
+    font-size: 32px;
+}
+#userinfo .userinfo_wrap .tit_box p {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #999;
+}
+
+#userinfo .basic_info {
+    width: 100%;
+}
+
+#userinfo .basic_info h3 {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+#userinfo .basic_info table {
+    width: 100%;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+}
+
+#userinfo .basic_info table tr {
+    border-bottom: 1px solid #cfcdcf;
+}
+
+#userinfo .basic_info table th {
+    text-align: left;
+    border-right: 1px solid #cfcdcf;
+    padding: 30px 0px;
+    padding-left: 50px;
+    box-sizing: border-box;
+    background-color: #faf7fb;
+    line-height: 22px;
+    vertical-align: middle;
+}
+#userinfo .basic_info table td {
+    padding-left: 40px;
+    vertical-align: middle;
+    text-align: left;
+    position: relative;
+}
+
+#userinfo .alert_msg {
+  position: absolute;
+  font-size: 12px;
+  padding: 10px 0;
+  left: 50px;
+  
+  top: 55px;
+  
+  color: #ef4444;
+}
+
+
+
+
+
+
+
+
+
+
+#userinfo .basic_info table .phoneNumber input {
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+#userinfo .basic_info table .phoneNumber input.certificate {
+  margin-top: 0;
+}
+#userinfo .basic_info table .phoneNumber span {
+  font-size: 14px;
+  color: #60a5fa;
+}
+#userinfo .basic_info table .phoneNumber button {
+  width: 140px;
+  height: 40px;
+
+  border-radius: 10px;
+  border: none;
+  background-color: #eeeef1;
+  font-size: 15px;
+  margin-left: 20px;
+  color: #999;
+  cursor: default;
+}
+#userinfo .basic_info table .phoneNumber button.active {
+  background-color: #76c3c5;
+  color: #fff;
+  cursor: pointer;
+}
+
+
+#userinfo .basic_info input {
+    width: 200px; 
+    height: 40px;
+    border: 1px solid #d9d9d9;
+    font-family: "Pretendard-Medium";
+    color: #333;
+    box-sizing: border-box;
+    padding-left: 20px;
+    font-size: 15px;
+    padding-right: 20px;
+    margin-right: 15px;
+}
+
+#userinfo .basic_info .addr {
+    position: relative;
+    padding-top: 20px;
+}
+
+#userinfo .basic_info .addr input {
+    display: block;
+    width: 470px;
+    margin-bottom: 20px;
+}
+#userinfo .basic_info .addr button {
+    position: absolute;
+    left: 535px;
+    top: 21px;
+    color: #fff;
+    font-size: 16px;
+    padding: 8px 20px;
+    background-color: #76c3c5;
+    border-radius: 10px;
+}
+#userinfo .basic_info .userpw button {
+    color: #fff;
+    font-size: 16px;
+    padding: 8px 20px;
+    background-color: #76c3c5;
+    border-radius: 10px;
+    margin-left: 10px;
+}
+
+#userinfo .basic_info .check {
+    padding-top: 20px;
+}
+
+#userinfo .revise_btn {
+  display: flex;
+
+  margin-top: 50px;
+  margin-bottom: 150px;
+  align-items: center;
+  justify-content: center;
+}
+
+#userinfo .revise_btn button {
+  font-size: 16px;
+  margin-right: 20px;
+  background-color: #ccc;
+  padding: 8px 20px;
+  border-radius: 10px;
+  transition: all 0.3s;
+  opacity: 1;
+}
+
+#userinfo .revise_btn button:hover {
+  opacity: 0.9;
+}
+#userinfo .revise_btn button.revise {
+  background-color: #4b5fa4;
+  color: #fff;
+}
+
+#userinfo .check {
+  position: relative;
+}
+#userinfo .check button {
+  position: absolute;
+  top: 20px;
+  font-size: 15px;
+  left: 550px;
+  color: #4b5fa4;
+}
+
+#userinfo .check button span {
+  margin-left: 5px;
+}
+
+#userinfo .check .pipp {
+  width: 530px;
+  height: 300px;
+  background-color: #FAFAFA;
+    border: 1px solid #EAEAEA;
+    padding: 26px 28px;
+    overflow-y: auto;
+    height: 140px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+#userinfo .check .pipp > p {
+  font-size: 15px;
+  letter-spacing: -0.9px;
+  color: #666;
+  line-height: 23px;
+}
+
+#userinfo .check .pipp table {
+    border: 1px solid #eaeaea;
+    width: 100%;
+    color: #888888;
+    line-height: 24px;
+    table-layout: auto;
+    border-left: 1px solid #ddd;
+    margin: 10px 0 8px 0;
+    font-size: 15px !important; 
+    line-height: 24px;
+}
+#userinfo .check .pipp table th {
+  text-align: center;
+  padding-left: 0;
+  height: 30px;
+  padding: 15px;
+  color: #333;
+  border-top: 1px solid #ddd !important;
+}
+#userinfo .check .pipp table td {
+  padding: 0;
+  border-right: 1px solid #ddd;
+  font-size: 14px;
+  padding: 10px;
+  padding-left: 15px;
+}
+
+#userinfo .check .pipp table td:last-child {
+  text-decoration: underline;
+}
+
+
+
+
+
+
+
+#userinfo .check .pipp ol {
+  font-size: 15px;
+  letter-spacing: -0.9px;
+  color: #888888;
+}
+#userinfo .check .pipp ol li {
+  margin-bottom: 20px;
+}
+#userinfo .check .pipp ol li p {
+  margin-top: 5px;
+}
+
+#userinfo .option {
+    display: flex;
+    margin-bottom: 20px;
+    /* outline: 1px solid red; */
+    align-items: center;
+}
+
+
+#userinfo .modal {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: rgba(0,0,0,0.1);
+    top:0;
+    left :0;
+}
+#userinfo .modal .modal_content {
+    background-color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    padding: 30px 40px;
+    border-radius: 10px;
+}
+
+
+#userinfo .modal .modal_content h3 {
+   text-align: center;
+   font-size: 20px;
+   margin-bottom: 40px;
+}
+#userinfo .modal .modal_content .flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+#userinfo .alert_msg2 {
+  position: absolute;
+  font-size: 12px;
+  padding: 10px 0;
+  left: 145px;
+  
+  top: 32px;
+  
+  color: #ef4444;
+}
+
+
+
+#userinfo .modal .modal_content .flex label {
+  width: 120px;
+  margin-right: 20px;
+}
+
+#userinfo .modal .modal_content .flex input {
+    width: 400px; 
+    height: 40px;
+    border: 1px solid #d9d9d9;
+    font-family: "Pretendard-Medium";
+    color: #333;
+    box-sizing: border-box;
+    padding-left: 20px;
+    font-size: 15px;
+    padding-right: 20px;
+    margin-right: 15px;
+}
+#userinfo .modal .modal_content .flex input::placeholder {
+    font-size: 14px;
+    color: #999;
+}
+#userinfo .modal .modal_content .flex button {
+    font-size: 16px;
+    padding: 5px 20px;
+    border-radius: 5px;
+    background-color: #76c3c5;
+    color: #fff;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+#userinfo .modal .modal_content .flex button:last-child {
+    background-color: #d9d9d9;
+    color: #666;
+}
+
+
+.joinModal {
+  text-align: center;
+}
+.joinModal p {
+  padding: 50px 0;
+  font-size: 18px;
+}
+.joinModal div > div {
+  padding: 20px 0;
+}
+.joinModal div > div button {
+  font-family: "Pretendard-Medium";
+  background-color: #76c3c5 !important;
+  color: #fff;
+  font-size: 16px;
+  transition: all 0.3s;
+  border-radius: 5px;
+  border: none;
+  padding: 8px 15px;
+  cursor: pointer;
+}
+
+
+.cbx {
+    position: relative;
+    top: 0px;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    display: block;
+    margin-right: 10px;
+  }
+  
+  .cbx:after {
+    content: '';
+    position: absolute;
+    top: 1%;
+    left: 6px;
+    width: 6px;
+    height: 12px;
+    opacity: 0;
+    transform: rotate(45deg) scale(0);
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    transition: all 0.3s ease;
+    transition-delay: 0.15s;
+  }
+  
+  #cbx:checked ~ .cbx {
+    border-color: transparent;
+    background: #76c3c5;
+    animation: jelly 0.4s ease;
+  }
+  
+  #cbx:checked ~ .cbx:after {
+    opacity: 1;
+    transform: rotate(45deg) scale(1);
+  }
+  
+  .cntr {
+    position: relative;
+  }
+  
+  @keyframes jelly {
+    from {
+      transform: scale(1, 1);
+    }
+  
+    20% {
+      transform: scale(1.3, 0.7);
+    }
+  
+    40% {
+      transform: scale(0.7, 1.3);
+    }
+  
+    60% {
+      transform: scale(1.1, 0.9);
+    }
+  
+    80% {
+      transform: scale(0.9, 1.1);
+    }
+  
+    to {
+      transform: scale(1, 1);
+    }
+  }
+  
+  .hidden-xs-up {
+    display: none!important;
+  }
+  
+  .checked {
+    background: #ec4899;
+    border-color: transparent;
+    animation: jelly 0.4s ease;
+  }
+  
+  .checked:after {
+    opacity: 1;
+    transform: rotate(45deg) scale(1);
+  }
+  
+
+
+
+  .cbx2 {
+    position: relative;
+    top: 0px;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    display: block;
+    margin-right: 10px;
+  }
+  
+  .cbx2:after {
+    content: '';
+    position: absolute;
+    top: 1%;
+    left: 6px;
+    width: 6px;
+    height: 12px;
+    opacity: 0;
+    transform: rotate(45deg) scale(0);
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    transition: all 0.3s ease;
+    transition-delay: 0.15s;
+  }
+  
+  #cbx2:checked ~ .cbx2 {
+    border-color: transparent;
+    background: #76c3c5;
+    animation: jelly 0.4s ease;
+  }
+  
+  #cbx2:checked ~ .cbx2:after {
+    opacity: 1;
+    transform: rotate(45deg) scale(1);
+  }
+  
+  .cntr2 {
+    position: relative;
+  }
+  
+  @keyframes jelly {
+    from {
+      transform: scale(1, 1);
+    }
+  
+    20% {
+      transform: scale(1.3, 0.7);
+    }
+  
+    40% {
+      transform: scale(0.7, 1.3);
+    }
+  
+    60% {
+      transform: scale(1.1, 0.9);
+    }
+  
+    80% {
+      transform: scale(0.9, 1.1);
+    }
+  
+    to {
+      transform: scale(1, 1);
+    }
+  }
+  
+  .hidden-xs-up2 {
+    display: none!important;
+  }
+  
+  .checked2 {
+    background: #ec4899;
+    border-color: transparent;
+    animation: jelly 0.4s ease;
+  }
+  
+  .checked2:after {
+    opacity: 1;
+    transform: rotate(45deg) scale(1);
+  }
+  
+
+
+
+
+  .cbx3 {
+    position: relative;
+    top: 0px;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    display: block;
+    margin-right: 10px;
+  }
+  
+  .cbx3:after {
+    content: '';
+    position: absolute;
+    top: 1%;
+    left: 6px;
+    width: 6px;
+    height: 12px;
+    opacity: 0;
+    transform: rotate(45deg) scale(0);
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    transition: all 0.3s ease;
+    transition-delay: 0.15s;
+  }
+  
+  #cbx3:checked ~ .cbx3 {
+    border-color: transparent;
+    background: #76c3c5;
+    animation: jelly 0.4s ease;
+  }
+  
+  #cbx3:checked ~ .cbx3:after {
+    opacity: 1;
+    transform: rotate(45deg) scale(1);
+  }
+  
+  .newletter {
+    position: absolute;
+    top: 30px;
+    left: 275px;
+
+    display: flex;
+    align-items: center;
+  }
+  .newletter p {
+    color: #666;
+    font-size: 15px;
+  }
+
+  .cntr3 {
+    position: relative;
+  }
+  
+  @keyframes jelly {
+    from {
+      transform: scale(1, 1);
+    }
+  
+    20% {
+      transform: scale(1.3, 0.7);
+    }
+  
+    40% {
+      transform: scale(0.7, 1.3);
+    }
+  
+    60% {
+      transform: scale(1.1, 0.9);
+    }
+  
+    80% {
+      transform: scale(0.9, 1.1);
+    }
+  
+    to {
+      transform: scale(1, 1);
+    }
+  }
+  
+  .hidden-xs-up3 {
+    display: none!important;
+  }
+  
+  .checked3 {
+    background: #ec4899;
+    border-color: transparent;
+    animation: jelly 0.4s ease;
+  }
+  
+  .checked3:after {
+    opacity: 1;
+    transform: rotate(45deg) scale(1);
+  }
+
+
+
+
+
+
+
+
+  
+.submit {
+    position: relative;
+    display: block;
+    padding: 20px 8px;
+    background-color: #76c3c5;
+    color: #ffffff;
+    font-size: 0.875rem;
+    font-weight: 500;
+    width: 72%;
+    margin: 0 auto;
+    text-transform: uppercase;
+    overflow: hidden;
+    font-size: 18px;
+    border-radius: 10px;
+  }
+  
+  .submit:hover {
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+    border-radius: 10px;
+    box-shadow: 4px 5px 17px -4px #ffffff;
+    cursor: pointer;
+    color: yellow;
+  }
+  
+  .submit:hover::before {
+    -webkit-animation: sh02 0.5s 0s linear;
+    -moz-animation: sh02 0.5s 0s linear;
+    animation: sh02 .5s 0s linear;
+  }
+  
+  .submit::before {
+    content: '';
+    display: block;
+    width: 0px;
+    height: 85%;
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    opacity: 0;
+    background: #fff;
+    box-shadow: 0 0 50px 30px #fff;
+    -webkit-transform: skewX(-20deg);
+    -moz-transform: skewX(-20deg);
+    -ms-transform: skewX(-20deg);
+    -o-transform: skewX(-20deg);
+    transform: skewX(-20deg);
+  }
+  
+  @keyframes sh02 {
+    from {
+      opacity: 0;
+      left: 0%;
+    }
+  
+    50% {
+      opacity: 1;
+    }
+  
+    to {
+      opacity: 0;
+      left: 100%;
+    }
+  }
+  

@@ -1,0 +1,314 @@
+@charset "utf-8";
+
+/* 슬라이드 */
+#myhome .project_list_myhome {
+    position: relative;
+  }
+  
+  #myhome .project_list_myhome {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+  #myhome .project_list_myhome .all_list_myhome {
+    display: flex !important;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  #myhome .project_list_myhome .all_list::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  
+  #myhome .project_list_myhome .all_list_myhome li {
+    flex: 0 0 31.66%;
+    margin-right: 2.5%;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border: 2px solid #eeeef1;
+    background-color: #fff;
+  
+    margin-bottom: 30px;
+  
+    box-sizing: border-box;
+  
+    padding: 20px;
+  
+    transition: border-color 0.2s ease; /* border-color에만 transition 적용 */
+  }
+  
+  #myhome .project_list_myhome .all_list_myhome li:hover {
+    border: 2px solid #64aeb1;
+  }
+  
+  /* #scrap .project_list .all_list li:nth-child(3n) {
+    margin-right: 0;
+  } */
+  
+  #myhome .project_list_myhome .all_list_myhome li.project_box_myhome .flex_01 {
+    margin-bottom: 20px;
+  }
+  
+  #myhome .project_list_myhome .all_list_myhome li.project_box_myhome .flex_01 p {
+    width: 350px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  
+  #myhome .project_list_myhome .all_list_myhome li.project_box_myhome h3 {
+    width: 350px;
+    height: 60px;
+    line-height: 28px;
+    font-size: 20px;
+    word-break: keep-all;
+  
+    /* white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden; */
+    overflow: hidden;
+    margin-bottom: 12px;
+  
+    font-weight: bold;
+  }
+  
+  #myhome .project_list_myhome .all_list_myhome li.project_box_myhome .des1 {
+    border: 1px solid #64aeb1;
+    padding: 5px 10px;
+    border-radius: 15px;
+    margin-right: 5px;
+    display: inline-block;
+    font-size: 15px;
+  }
+  #myhome .project_list_myhome .all_list_myhome li.project_box_myhome .des2 {
+    border: 1px solid #64aeb1;
+    padding: 5px 10px;
+    border-radius: 15px;
+    margin-right: 5px;
+    display: inline-block;
+    margin-bottom: 10px;
+    font-size: 15px;
+  }
+  
+  #myhome .project_list_myhome .all_list_myhome li.project_box_myhome .pj_description {
+    font-size: 16px;
+    color: #888;
+    font-weight: 400;
+    margin-bottom: 15px;
+  }
+  #myhome .project_list_myhome .all_list_myhome li.project_box_myhome .pj_price {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  #myhome .project_list_myhome .all_list_myhome li.project_box_myhome .no_str {
+    color: #ff8168;
+  }
+  
+  #myhome .project_list_myhome .all_list_myhome li.project_box_myhome .flex_02 {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  #myhome .project_list_myhome .all_list_myhome li.project_box_myhome .flex_02 button {
+    cursor: pointer;
+    /* outline: 1px solid red; */
+    border: none;
+    width: 20px;
+    height: 20px;
+  }
+  
+  #myhome .project_box .flex_02 button.star_off {
+    background: url("../../img/star_off.svg") no-repeat;
+  }
+  #myhome .project_box .flex_02 button.star_on {
+    background: url("../../img/star_on.svg") no-repeat;
+    opacity: 0.6;
+  }
+
+  /* 슬라이드 버튼 */
+  #myhome .slide_btn {
+    display: flex;
+    justify-content: end;
+  }
+  
+  #myhome .slide_btn button:first-child {
+    margin-right: 10px;
+    margin-bottom: 40px;
+  }
+  
+  #myhome .slide_btn button {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+  
+    cursor: pointer;
+  }
+  
+  #myhome .slide_btn button span {
+    font-size: 18px;
+    box-sizing: border-box;
+    display: inline-block;
+    padding-top: 3px;
+    transition: all 0.3s;
+  }
+  #myhome .slide_btn button:hover span {
+    color: #76c3c5;
+  }
+  
+  #myhome .slide_btn .disabled {
+    border: 1px solid #d9d9d9;
+    cursor: default;
+  }
+  
+  #myhome .slide_btn .disabled span {
+    color: #ccc !important;
+  }
+
+  #myhome .no-data-message {
+      text-align: center;
+      padding: 50px 0 120px;
+  }
+  #myhome .no-data-message p {
+      font-size: 20px;
+      line-height: 30px;
+  }
+  #myhome .no-data-message p:nth-child(2) {
+    margin-bottom: 30px;
+  }
+
+  #myhome .no-data-message a {
+    display: inline-block;
+    background-color: #76c3c5;
+    color: #fff;
+    padding: 10px 25px;
+    font-size: 16px;
+    border-radius: 30px;
+
+    transition: all 0.3s;
+  }
+  #myhome .no-data-message a:hover {
+    background-color: #64aeb1;
+  }
+
+  #myhome li .lastCard p{
+    line-height: 28px;
+    font-size: 18px;
+  }
+
+  #myhome .lastCardWrap {
+    display: flex;
+    align-items: center;
+    border: 2px solid #76c3c5 !important;
+  }
+  
+  #myhome li .lastCard p span {
+    color: #ff8168;
+  }
+  #myhome li .lastCard a{
+      margin-top: 20px;
+      background-color: #76c3c5;
+      display: inline-block;
+      padding: 10px 15px;
+      border-radius: 5px;
+      color: #fff;
+      transition: all 0.3s;
+  }
+  #myhome li .lastCard a:hover {
+    transform: translateX(5px);
+  }
+
+  .endText {
+    color: #999 !important;
+  }
+
+  #myhome .milestone-txt {
+    display: flex;
+    position: relative;
+    align-items: start;
+  }
+
+  #myhome .milestone {
+    position: relative;
+  }
+
+  #myhome .explainMsg {
+    margin-left: 10px;
+    position: absolute;
+    top: 2px;
+    left: 180px;
+    border: 1px solid #d2d2d2;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 12px;
+    text-align: center;
+    vertical-align: top;
+    color: #666;
+  }
+
+  #myhome .explainMsg span {
+    color: #ccc;
+  }
+  #myhome .milestone .explainPopup {
+    position: absolute;
+    top: -43px;
+    left: 230px;
+    border: 1px solid #e1e1e1;
+    padding: 10px;
+    opacity: 0;
+    transition: all 0.3s;
+    border-radius: 10px;
+  }
+  #myhome .milestone .explainPopup::before {
+    position: absolute;
+    left: -9px;
+    top: 45px;
+    content: "";
+    display: block;
+    background-color: #fff;
+
+    width: 15px;
+    height: 15px;
+    border: 1px solid #e1e1e1;
+    border-width: 0px 1px 1px 0px;
+
+    transform: rotate(144deg) skewX(15deg);
+  }
+
+  #myhome .milestone .explainPopup.visible {
+    opacity: 1;
+  }
+  #myhome .milestone .explainPopup.hidden {
+    opacity: 0;
+  }
+  #myhome .milestone .explainPopup h5 {
+    font-size: 17px;
+    margin-bottom: 20px;
+  }
+  #myhome .milestone .explainPopup h5 span {
+    display: inline-block;
+    position: relative;
+    top: 4px;
+    margin-right: 5px;
+  }
+  #myhome .milestone .explainPopup h5 span:last-child{
+    margin-left: 5px;
+  }
+  #myhome .milestone .explainPopup p {
+    line-height: 26px;
+    color: #666;
+  }
+  #myhome .milestone .explainPopup p span {
+    display: inline-block;
+    position: relative;
+    top: 5px;
+    margin-right: 5px;
+  }

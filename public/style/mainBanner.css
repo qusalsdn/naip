@@ -1,0 +1,444 @@
+@charset "utf-8";
+
+.mainBanner {
+  height: 400px;
+  width: 100%;
+  background: url("../img/main_bg.jpg") no-repeat;
+  background-size: 100%;
+}
+.mainBanner .inner {
+  width: 1280px;
+  margin: 0 auto;
+}
+
+.mainBanner .flex {
+  display: flex;
+  padding-top: 30px;
+}
+
+.mainBanner .flex .main_banner_box {
+  width: 64%;
+  height: 250px;
+  background-color: #fff;
+  margin-right: 2.66%;
+  box-shadow: 0px 0px 15px rgba(0, 76, 111, 0.2);
+}
+
+.mainBanner .flex .login_frm_box {
+  width: 33.33%;
+  height: 250px;
+  background-color: #fff;
+
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  box-shadow: 0px 0px 15px rgba(0, 76, 111, 0.2);
+}
+
+.slide {
+  position: relative;
+  box-sizing: border-box;
+  padding: 20px;
+  height: 250px;
+
+  background-position: top center;
+  background-size: 100%;
+}
+
+.slide .tit-box {
+  margin-top: 30px;
+  margin-left: 10px;
+}
+.slide .sub_title {
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.slide .sub_title em {
+  color: #4a5fa4;
+}
+
+.slide .title {
+  font-size: 36px;
+  font-weight: bold;
+  color: #081d61;
+  margin-bottom: 15px;
+}
+
+.slide .content {
+  color: #a9a9a9;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.main_banner_box .pagination {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main_banner_box .pagination span {
+  width: 40px;
+  height: 10px;
+  display: inline-block;
+  margin-right: 15px;
+  font-size: 0;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: all 0.3s;
+
+  background-color: #ccc;
+}
+.main_banner_box .pagination span.active {
+  width: 60px;
+  background-color: #4a5fa4;
+}
+
+.login_frm_box {
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+.login_frm_box .login_msg {
+  font-size: 18px;
+  color: #081d61;
+  margin-bottom: -10px;
+}
+.login_frm_box .flex {
+  display: flex;
+}
+
+.login_frm_box .login_input {
+  width: 75%;
+  margin-right: 3%;
+}
+
+.login_frm_box .login_input input {
+  width: 100%;
+  border: none;
+  border: 1px solid #ccc;
+  height: 40px;
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: 16px;
+
+  font-family: "Pretendard-Medium";
+}
+.login_frm_box .login_input input::placeholder {
+  color: #e5e5e5;
+  font-size: 16px;
+}
+.login_frm_box .login_input input:focus {
+  border: 1px solid #081d61;
+  outline: none;
+}
+.login_frm_box .login_input input[type="text"] {
+  border-bottom: none;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.login_frm_box .login_input input[type="text"]:focus {
+  border: 1px solid #081d61;
+}
+
+.login_frm_box .login_input input[type="password"] {
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.login_frm_box .login_btn {
+  width: 22%;
+
+  position: relative;
+}
+.login_frm_box .login_btn_icon {
+  color: #fff;
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 25px;
+
+  pointer-events: none;
+}
+
+.login_frm_box .login_btn input {
+  width: 100%;
+  height: 100%;
+  outline: none;
+  border: none;
+
+  transition: all 0.3s;
+  cursor: pointer;
+  background-color: #4a5fa4;
+  color: #fff;
+
+  font-family: "Pretendard-Medium";
+  border-radius: 10px;
+  font-size: 16px;
+
+  box-sizing: border-box;
+  padding-top: 40px;
+}
+
+.login_frm_box .login_btn input:hover {
+  background-color: #657abd;
+}
+.login_frm_box label {
+  margin-top: 16px;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+.login_frm_box label input {
+  margin-right: 8px;
+}
+.login_frm_box label span {
+  color: #666;
+}
+
+.login_frm_box .user_btn {
+  text-align: center;
+}
+
+.login_frm_box .user_btn a {
+  display: inline-block;
+  font-family: "Pretendard-Medium";
+  border: none;
+  background-color: #fff;
+  font-size: 15px;
+  margin-right: 10px;
+  color: #999;
+  cursor: pointer;
+
+  position: relative;
+  padding: 0px 10px;
+}
+
+.login_frm_box .user_btn a:hover {
+  text-decoration: underline;
+}
+
+.login_frm_box .user_btn a::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0px;
+  left: -6px;
+  width: 2px;
+  height: 100%;
+  background-color: #999;
+}
+.login_frm_box a:first-child::before {
+  display: none;
+}
+
+.banner {
+  opacity: 0;
+  transition: opacity 0.5s;
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  cursor: pointer;
+}
+
+.banner {
+  opacity: 0;
+  transition: opacity 0.5s;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.banner:nth-child(1) {
+  width: 100%;
+  height: 100%;
+  background: url("../img/banner_bg_1-5.jpg") no-repeat top/cover;
+}
+.banner:nth-child(2) {
+  width: 100%;
+  height: 100%;
+  background: url("../img/banner_bg_3.jpg") no-repeat top/cover;
+  background-color: #fff;
+}
+
+.banner:nth-child(3) {
+  width: 100%;
+  height: 100%;
+  background: url("../img/banner_bg_2.jpg") no-repeat top/cover;
+  background-size: 100%;
+}
+
+
+.banner.fade-in {
+  opacity: 1;
+  animation: fadeInAnimation 0.5s;
+}
+
+
+.mainBanner .alert_modal {
+  position: fixed;
+  width: 1920px;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.2);
+  z-index: 99999;
+  top: 0;
+  left: 0;
+}
+
+.mainBanner .alert_modal .modal_content {
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 180px;
+  border-radius: 10px;
+}
+
+
+.mainBanner .alert_modal .modal_content p {
+   width: 100%;
+   text-align: center;
+   margin-top: 60px;
+   font-size: 18px;
+}
+
+.mainBanner .alert_modal .modal_content button {
+  margin: 0 auto;
+  display: block;
+  
+  margin-top: 30px;
+  font-size: 16px;
+  background-color: transparent;
+  color: #081d61;
+}
+
+
+
+.mainBanner .sp_login {
+  position: relative;
+  top: -7px;
+}
+
+
+.mainBanner .sp_login_top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #d9d9d9;
+  padding-bottom: 15px;
+}
+
+.mainBanner .sp_login_top p {
+  font-size: 18px;
+  color: #666;
+}
+.mainBanner .sp_login_top p span {
+  color: #4a5fa4;
+}
+
+.mainBanner .sp_login_top button {
+   padding: 5px 15px;
+   font-size: 15px;
+   background-color: #fff;
+   border: 1px solid #ccc;
+   border-radius: 30px;
+   color: #666;
+   padding-right: 35px;
+   background: url('../img/logout.png') no-repeat;
+   background-position: 72px 5px;
+   transition: all 0.2s;
+}
+
+.mainBanner .sp_login_top button:hover {
+  background-position: 75px 5px;
+}
+
+
+.mainBanner .sp_login_btn {
+  display: flex;
+  height: 100px; /* 총 높이 설정 */
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.mainBanner .sp_login_btn a {
+  background-color: #fff;
+  border-radius: 10px;
+  border: 1px solid #d9d9d9;
+  font-size: 16px;
+  transition: all 0.4s;
+  box-sizing: border-box;
+  text-align: center;
+  padding-top: 15px;
+}
+.mainBanner .sp_login_btn a:hover {
+  box-shadow: 0px 0px 15px rgba(0, 76, 111, 0.2);
+}
+
+.mainBanner .sp_login_btn .my_scrap {
+  flex: 2;
+  width: 40%;
+  margin-right: 8px;
+  
+  padding-top: 22px;
+}
+.mainBanner .sp_login_btn .my_scrap p {
+  margin-bottom: 5px;
+}
+.mainBanner .sp_login_btn .my_scrap span {
+  font-family: "Montserrat-SemiBold";
+  font-size: 24px;
+  color: #ffa772;
+}
+
+
+.mainBanner .right_btn {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+}
+
+.mainBanner .sp_login_btn .my_keyword {
+  flex: 1;
+  margin-bottom: 8px;
+  color: #1b1686;
+}
+.mainBanner .sp_login_btn .my_recommend {
+  flex: 1;
+  color: #76c3c5;
+}
+.mainBanner .sp_login_bottom a {
+  font-size: 15px;
+  display: inline-block;
+  margin-right: 20px;
+  transition: all 0.3s;
+}
+.mainBanner .sp_login_bottom a:last-child {
+  float: right;
+  margin-right: 0;
+}
+
+.mainBanner .sp_login_bottom a:hover {
+  color: #4a5fa4;
+}
+
+.mainBanner .sp_login_bottom a span {
+  margin-left: 5px;
+  color: #ffa772;
+}
+
+
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

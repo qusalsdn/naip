@@ -1,0 +1,406 @@
+@charset "utf-8";
+
+header {
+    width: 100%;
+    height: 150px;
+}
+
+header .inner {
+    width: 1280px;
+    margin: 0 auto;
+}
+
+header .header_top {
+    width: 100%;
+    height: 100px;
+    background-color: #fff;
+}
+
+header .header_top .logo{
+    width: 300px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header .header_top .top_inner {
+    display: flex;
+    justify-content: space-between;
+}
+
+header .main_search {
+    width: calc(100% - 600px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header input[type=search] {
+    width: 60%;
+    height: 40px;
+    padding: 0px 20px;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-right: none;
+    border: 1px solid #76c3c5;
+    font-family: "Pretendard-Medium";
+    font-size: 16px; 
+    color: #333;
+}
+header input[type=search]::placeholder {
+    font-size: 16px;
+    color: #d9d9d9;
+}
+
+
+
+header input[type=submit] {
+    border: none;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    background: url('../img/search_bg.png') no-repeat;
+
+    font-family: "Pretendard-Medium";
+    font-size: 16px; 
+    
+    width: 50px;
+    height: 40px;
+    cursor: pointer;
+    
+}
+
+
+header input[type=search]:focus {
+    border: 2px solid #76c3c5;
+    outline: none;
+}
+
+header .header_login {
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+header .header_login a {
+    border: none;
+    background-color: #fff;
+    font-family: "Pretendard-Medium";
+    font-size: 16px;
+    cursor: pointer;
+    color: #333;
+    padding: 0px 10px;
+}
+
+header .header_login button:hover {
+    text-decoration: underline;
+}
+
+header .header_login.active {
+    width: 350px;
+    justify-content: space-between;
+}
+
+
+header .header_login.active button {
+    background-color: transparent;
+    font-size: 16px;
+    position: relative;
+}
+header .header_login.active button::after {
+    position: absolute;
+    top: 5px;
+    right: -16px;
+    content: "";
+    display: block;
+    width: 2px;
+    height: 60%;
+    background-color: #999;
+}
+header .header_login.active p span {
+    color: #4462d7;
+}
+header .header_login.active a {
+    color: #76c3c5;
+}
+header .header_login.active a:hover {
+    text-decoration: underline;
+}
+
+
+header .header_bottom {
+    width: 100%;
+    height: 50px;
+    background-color: #76c3c5;
+
+    position:relative;
+}
+
+/* 서브메뉴(임시) */
+header .header_bottom .site-map { 
+    display: none;
+    width: 1920px;
+    height: 200px;
+    background-color: #76c3c5;
+    position: absolute;
+    top: 100%;
+    left: -320px;
+    z-index: 99999;
+}
+
+header .menu_bar {
+    display: flex;
+    width: 100px;
+}
+
+header .menu_open {
+    border: none;
+    display: block;
+    width: 100%;
+    height: 50%;
+}
+header .menu_open span {
+    display: block;
+}
+
+header .header_bottom .inner {
+    position: relative;
+}
+
+
+/* 메뉴버튼 */
+header .menu_btn {
+    display: block;
+    /* outline: 1px solid red; */
+    position: absolute;
+    top: 7px;
+    left: 0%;
+    z-index: 99999;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    box-sizing: border-box;
+    /* background-color: #ccc; */
+}
+
+header .menu_btn span {
+    position: absolute;
+    left: 18px;
+    width: 47px;
+    height: 3px;
+    background-color: #fff;
+    transition: 0.3s;
+}
+header .menu_btn span:nth-child(1) {
+    top: 23px;
+    width: 37px;
+}
+
+header .menu_btn span:nth-child(2) {
+    margin-top: -1px;
+    top: 50%;
+}
+
+header .menu_btn span:nth-child(3) {
+    bottom: 23px;
+    width: 30px;
+}
+
+header .menu_btn {
+    display: block;
+    
+    margin-top: 3px;
+    right: 15px;
+    width: 34px;
+    height: 30px;
+    border: 0 none;
+}
+
+header .menu_btn span {
+    position: absolute;
+    left: 0;
+    width: 100% !important;
+    height: 3px;
+    border-radius: 3px;
+
+    transition: 0.3s;
+}
+
+header .menu_btn span:nth-child(1) {
+    top: 2px;
+}
+
+header .menu_btn.on span:nth-child(1) {
+    transform: rotate(45deg);
+    top: 47%;
+    background-color: #fff;
+}
+
+header .menu_btn span:nth-child(2) {
+    margin-top: -1px;
+    top: 50%;
+}
+
+header .menu_btn.on span:nth-child(2) {
+    opacity: 0;
+}
+
+header .menu_btn span:nth-child(3) {
+    bottom: 2px;
+}
+
+header .menu_btn.on span:nth-child(3) {
+    transform: rotate(-45deg);
+    bottom: 45%;
+    background-color: #fff;
+}/* 메뉴버튼 */
+
+
+/* gnb */
+
+header .gnb {
+    display: flex;
+    width: 50%;
+    margin-left: 0px;
+    align-items: center;
+}
+
+header .gnb > li {
+    position: relative;
+    margin-right: 50px;
+}
+
+header .gnb::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+
+header .gnb > li >a {
+    margin-top: 2px;
+    font-size: 18px;
+    padding: 15px;
+    color: #fff;
+    display: block;
+
+    position: relative;
+    /* outline: 1px solid red; */
+}
+
+header .gnb>li >a::before {
+    display: block;
+    content: "";
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    width: 0%;
+    height: 3px;
+    background-color: #fff;
+
+    transform: translateX(-50%);
+
+    transition: all 0.3s;
+}
+
+header .gnb> li:hover >a::before {
+    width: 80%;
+}
+
+header .gnb li .sub_menu {
+    opacity: 0;
+    visibility: hidden;
+
+    position: absolute;
+    z-index: 999;
+    left: -11%;
+    width: 120%;
+    box-sizing: border-box;
+    padding: 0px 20px;
+    
+    background-color: #fff;
+    border: 1px solid #76c3c5;
+    border-top: 0;
+    text-align: center;
+
+    transition: all 0.3s;
+}
+
+
+header .gnb li .sub_menu.active {
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.3s ease-in;
+}
+
+header .gnb li .sub_menu > li {
+    width: 100%;
+}
+
+header .gnb li .sub_menu > li a {
+    color: #333;
+    display: block;
+    width: 100%;
+    font-size: 17px;
+    line-height: 70px;
+    position: relative;
+}
+
+header .gnb li .sub_menu > li a:hover {
+    color: #76c3c5;
+}
+
+header .gnb li .sub_menu > li > a::before {
+    position: absolute;
+    right: 0px;
+    top: 15px;
+    width: 10px;
+    height: 10px;
+    display: block;
+    content: "";
+    background-color: #76c3c5;
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 0.2s;
+}
+
+header .gnb li .sub_menu > li:hover a::before {
+    opacity: 1;
+    top: 10px;
+    right: -5px;
+}
+
+header .gnb li .sub_menu > li:first-child > a::before {
+    position: absolute;
+    right: 0px;
+    top: 15px;
+    width: 10px;
+    height: 10px;
+    display: block;
+    content: "";
+    background-color: #76c3c5;
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 0.2s;
+}
+
+header .gnb li .sub_menu > li:first-child:hover a::before {
+    opacity: 1;
+    top: 10px;
+    right: -10px;
+}
+
+
+
+.go_mypage {
+    position: absolute;
+    top: 15px;
+    right: 0;
+    font-size: 18px;
+    color: #fff;
+}
+
+
+.header_login.mainpageMenu {
+    width: 150px !important;
+}

@@ -1,0 +1,456 @@
+@charset "utf-8";
+
+.search .inner {
+    width: 1280px;
+    margin: 0 auto;
+}
+
+
+.search_wrap {
+    width: 100%;
+    background-color: #ccc;
+
+    position: relative;
+    top: -65px;
+
+    display: flex;
+
+    box-shadow: 0px 0px 15px rgba(0,76,111,0.2);
+}
+
+
+/* 검색바 왼쪽 */
+.search_wrap .search_bar {
+    width: 66.66%;
+
+    background-color: #fff;
+    box-sizing: border-box;
+    padding: 20px;
+
+    position: relative;
+}
+
+.search_bar form .able {
+    margin-bottom: 15px;
+}
+
+.search_bar form .able label {
+    font-size: 14px;
+    margin-right: 10px;
+}
+ 
+.search_bar form .able label input {
+    position: relative;
+    top: 2px;
+    margin-right: 5px;
+}
+
+.detail_search {
+    float: right;
+    margin-right: 20px;
+    outline: none;
+    border: none;
+    font-family: "Pretendard-Medium";
+    font-size: 15px;
+    padding: 2px 8px;
+    cursor: pointer;
+    background-color: #4a5fa4;
+    color: #fff;
+    border-radius: 5px;
+    transition :all 0.3s;
+}
+.detail_search:hover {
+    background-color: #687bb8;
+}
+
+
+.search_bar .dateSelect {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.search_bar .dateSelect select {
+    border-radius: 0;
+    padding: 0px 4px;
+    height: 37px;
+    font-size: 15px;
+    text-align: left;
+    font-family: "Pretendard-Medium";
+    border: 1px solid #e5e5e5;
+    color: #666;
+}
+.search_bar .dateSelect input[type="date"] {
+    border-radius: 0;
+    padding: 0px 14px;
+    height: 35px;
+    font-size: 15px;
+    text-align: left;
+    font-family: "Pretendard-Medium";
+    border: 1px solid #e5e5e5;
+    border-left: none;
+
+    color: #666;
+    
+}
+
+.search_bar .dateSelect input[type="date"].last {
+    margin-right: 10px;
+    display: block;
+}
+
+
+.search_bar .dateSelect span {
+    width: 40px;
+    text-align: center;
+    padding-top: 10px;
+    box-sizing: border-box;
+    border: 1px solid #e5e5e5;
+    position: relative;
+    border-left: 0;
+    height: 37px;
+    color: #999;
+    display: inline-block;
+}
+
+.search_bar .dateSelect label {
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+
+.search_bar .dateSelect label input {
+    position: relative;
+    top: 2px;
+    margin-right: 3px;
+}
+
+.search_frm {
+    width: 100%;
+    margin-bottom: 15px;
+    display: flex;
+
+    align-items: center;
+}
+
+.search_frm p{
+    margin-right: 30px;
+}
+
+.dateSelect p { 
+    margin-right: 30px;
+}
+
+.search-bar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+.search-bar p {
+    margin-right: 15px;
+}
+
+.search_bar input[type="search"] {
+    border-radius: 0;
+    height: 40px;
+    padding: 0px 14px;
+    font-size: 15px;
+    text-align: left;
+    font-family: "Pretendard-Medium";
+    border: 1px solid #e5e5e5;
+    color: #666;
+    width: 68.5%;
+    background: url('../img/search.png') no-repeat;
+    background-position: 2% 50%;
+    padding-left: 55px;
+}
+
+.search_frm select {
+    height: 40px;
+    width: 20%;
+    border-radius: 0;
+    padding: 0px 14px;
+    font-size: 15px;
+    text-align: left;
+    font-family: "Pretendard-Medium";
+    border: 1px solid #e5e5e5;
+    color: #666;
+    margin-right: 10px;
+    padding-left: 10px;
+}
+.search_frm select:nth-child(2) {
+    width: 30.7%;
+}
+.search_frm input[type="text"] {
+    width: 30%;
+    height: 40px;
+    box-sizing: border-box;
+    border: 1px solid #e5e5e5;
+    
+    font-family: "Pretendard-Medium";
+    font-size: 15px;
+    padding-left: 15px;
+}
+.search_frm input[type="text"]::placeholder {
+    color: #a9a9a9;
+}
+
+.search-bar input[type="submit"] {
+    width: 12%;
+    margin-left: 2%;
+    height: 40px;
+    outline: none;
+    border: none;
+    background-color: #76c3c5;
+    font-family: "Pretendard-Medium";
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+
+}
+
+.search-bar input[type="submit"].active {
+
+    position: relative;
+    top: 30px;
+}
+
+.search_frm input[type="submit"]:hover {
+    background-color: #64aeb1;
+}
+
+.keyword {
+    position: absolute;
+    right: 20px;
+    margin-top: 5px;
+    color: #666;
+}
+
+.popular {
+    display: flex;
+    margin-top: 20px;
+}
+.popular p {
+    margin-right: 20px;
+    color: #012d77;
+    font-size: 16px;
+    display: inline;
+}
+
+.popular p img {
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    position: relative;
+    top: 2px;
+    margin-right: 5px;
+}
+.popular span {
+    margin-top: 3px;
+    margin-right: 10px;
+    color: #999;
+    font-size: 15px;
+}
+.popular em {
+    display: inline;
+}
+
+
+
+
+/* 검색바 오른쪽  */
+.search_wrap .sb_business {
+    width: 33.33%;
+
+    /* background: url('../img/sb_business_bg.png') no-repeat;
+    background-size: cover; */
+    background-color: #76c3c5;
+    box-sizing: border-box;
+    padding: 20px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.search_wrap .sb_business .today {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    font-size: 14px;
+    color: #fff;
+}
+.search_wrap .sb_business h2 {
+    color: #fff;
+    width: 100%;
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 20px;
+    z-index:6;
+    letter-spacing: 1.5px;
+
+    font-family: "GmarketSansTTFMedium";
+    font-weight: 600;
+
+    position: absolute;
+    left: 0;
+    top: 43px;
+}
+.search_wrap .sb_business h2.active {
+    top: 115px;
+}
+
+/* .search_wrap .sb_business h2::after {
+    position: absolute;
+    
+    z-index: 5;
+    top:0;
+    left: -76px;
+
+    display: block;
+    content: "";
+    width: 80%;
+    height: 50px;
+    background-color: #b8e9eb2f;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+} */
+
+
+.search_wrap .sb_business .flex {
+    display: flex;
+    width: 100%;
+
+    position: absolute;
+    left: 0;
+    top: 88px;
+}
+
+.search_wrap .sb_business .flex.active {
+    top: 180px
+}
+
+.search_wrap .sb_business .flex .sb_txt-box {
+    width: 50%;
+    text-align: center;
+}
+
+.search_wrap .sb_business .flex .sb_txt-box img {
+    margin: 0 auto;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.search_wrap .sb_business .flex .sb_txt-box a {
+    color: #fff;
+    cursor: default;
+    font-size: 18px;
+    transition: 0.2s;
+}
+
+.search_wrap .sb_business .flex .sb_txt-box a h4 {
+    font-size: 18px;
+    margin-bottom: 5px;
+    margin-top: -5px;
+    
+    font-family: "GmarketSansTTFMedium";
+}
+
+.search_wrap .sb_business .flex .sb_txt-box a p {
+    font-family: "GmarketSansTTFMedium";
+    font-size: 20px;
+}
+.search_wrap .sb_business .flex .sb_txt-box a p span {
+    font-size: 30px;
+    color: #ffd47d;
+    font-family: "Montserrat-SemiBold";
+}
+
+.except_keyword {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.except_keyword p {
+    margin-right: 15px;
+}
+.except_keyword input {
+    width: 64.8%;
+    border-radius: 0;
+    height: 40px;
+    padding: 0px 14px;
+    font-size: 15px;
+    text-align: left;
+    font-family: "Pretendard-Medium";
+    border: 1px solid #e5e5e5;
+    color: #666;
+}
+
+
+
+/* .search_wrap .sb_business .flex .sb_txt-box a:hover {
+    color: #6871ff  ;
+    opacity: 0.75;
+} 
+.search_wrap .sb_business .flex .sb_txt-box a:hover img {
+    filter: invert(49%) sepia(48%) saturate(499%) hue-rotate(199deg) brightness(87%) contrast(182%);
+}  */
+
+
+.search_wrap .sb_business .flex .sb_txt-box:first-child {
+    position: relative;
+}
+
+/* .search_wrap .sb_business .flex .sb_txt-box:first-child::after {
+    content: "";
+    width: 2px;
+    height: 85%;
+    background-color: #fff;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 100%;
+} */
+
+.search .condition {
+    width: 100%;
+    margin-bottom: 20px;
+    /* outline: 1px solid red; */
+}
+.search .condition label {
+    margin-right: 20px;
+}
+.search .condition label input {
+    margin-right: 10px;
+}
+
+.search .total_sb {
+    display: flex;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    align-items: self-end;
+    gap: 5px;
+}
+.search .total_sb h4 {
+    font-size: 18px;
+    
+    font-family: "GmarketSansTTFMedium";
+    color: #fff;
+}
+.search .total_sb p {
+    
+    font-family: "GmarketSansTTFMedium";
+    font-size: 17px;
+    color: #fff;
+}
+.search .total_sb p span {
+    
+    font-size: 20px;
+    color: #ffd47d;
+    font-family: "Montserrat-SemiBold";
+}

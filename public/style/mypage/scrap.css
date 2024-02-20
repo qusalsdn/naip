@@ -1,0 +1,551 @@
+@charset "utf-8";
+
+/* 스크랩/즐겨찾기 */
+
+#scrap {
+  margin-top: 100px;
+}
+
+#scrap h2 {
+  font-size: 32px;
+  margin-bottom: 50px;
+}
+
+#wrap .my_scrap {
+  background: none;
+}
+
+#scrap .tit_box h2 {
+  margin-bottom: 70px;
+}
+
+#scrap .scrap-top {
+  display: flex;
+  margin-bottom: 40px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#scrap .scrap-top .top_box {
+  display: flex;
+  align-items: center;
+}
+
+#scrap .scrap-top .top_box > p {
+  font-size: 17px;
+  color: #666;
+}
+#scrap .scrap-top .top_box .color {
+  color: #4b5fa4;
+}
+
+#scrap .scrap-top .flex {
+  display: flex;
+  margin-right: 40px;
+  align-items: center;
+}
+
+#scrap .scrap-top .flex p {
+  font-size: 22px;
+
+  position: relative;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+#scrap .scrap-top .flex p.active::before {
+  opacity: 1;
+}
+#scrap .scrap-top .flex p:hover::before {
+  opacity: 1;
+}
+
+#scrap .scrap-top .flex p::before {
+  content: "";
+  opacity: 0;
+  width: 100%;
+  height: 5px;
+  background-color: #76c3c5;
+  position: absolute;
+  bottom: -15px;
+  left: 0;
+  transition: all 0.3s;
+  border-radius: 100px;
+}
+
+#scrap .scrap-top .flex span {
+  box-sizing: border-box;
+  padding: 6px 10px;
+  font-size: 20px;
+  background-color: #76c3c5;
+  border-radius: 15px;
+  color: #fff;
+  font-family: "Montserrat-SemiBold";
+  cursor: pointer;
+}
+
+#scrap .slide_btn {
+  display: flex;
+  justify-content: end;
+}
+
+#scrap .slide_btn button:first-child {
+  margin-right: 10px;
+  margin-bottom: 40px;
+}
+
+#scrap .slide_btn button {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+
+  cursor: pointer;
+}
+
+#scrap .slide_btn button span {
+  font-size: 18px;
+  box-sizing: border-box;
+  display: inline-block;
+  padding-top: 3px;
+  transition: all 0.3s;
+}
+#scrap .slide_btn button:hover span {
+  color: #76c3c5;
+}
+
+#scrap .slide_btn .disabled {
+  border: 1px solid #d9d9d9;
+  cursor: default;
+}
+
+#scrap .slide_btn .disabled span {
+  color: #ccc !important;
+}
+
+#scrap table {
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+#scrap table thead {
+  background-color: #eef1ee;
+  border-top: 3px solid #333;
+}
+
+#scrap table thead th {
+  padding: 12px 0;
+  line-height: 18px;
+  font-size: 16px;
+  border-bottom: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  text-align: center;
+  color: #333;
+  vertical-align: middle;
+}
+
+#scrap table tbody td {
+  padding: 10px 10px 12px 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+  font-size: 15px;
+  letter-spacing: -0.02em;
+  line-height: 17px;
+  border-left: 1px solid #ddd;
+
+  vertical-align: middle;
+}
+
+#scrap table tbody td label {
+  display: block;
+}
+
+#scrap table thead th:first-child {
+  border-left: none;
+}
+
+#scrap table tbody td:first-child {
+  border-left: none;
+}
+
+#scrap table tbody td.info {
+  text-align: left;
+  padding-left: 10px;
+}
+
+#scrap table tbody td.info img {
+  display: inline-block;
+  width: auto;
+  margin-right: 5px;
+}
+
+#scrap table tbody td.info a {
+  display: inline-block;
+  /* width: 350px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden; */
+
+  line-height: 24px;
+  font-size: 18px;
+  color: #000;
+}
+
+#scrap table tbody td.info a:hover {
+  text-decoration: underline;
+}
+
+#scrap table tbody td.info p {
+  font-size: 14px;
+  color: #999;
+}
+
+#scrap table tbody td .blue-color {
+  color: #3585f2;
+}
+#scrap table tbody td .red-color {
+  color: #ff5656;
+}
+
+.table_scrap {
+  font-size: 0;
+  display: block;
+  width: 18px;
+  height: 18px;
+  margin: 0 auto;
+  border: none;
+  /* outline: 1px solid red; */
+  cursor: pointer;
+  background-color: transparent;
+}
+#scrap .scrap_list {
+  margin-top: -85px;
+}
+
+#scrap .type {
+  width: 85%;
+  height: 50px;
+  margin-bottom: 50px;
+  background-color: #fff;
+  border: 1px dashed #ccc;
+
+  display: flex;
+  align-items: center;
+}
+#scrap .type h6 {
+  margin-left: 30px;
+  margin-right: 50px;
+}
+
+#scrap .type span {
+  color: #ea3535;
+}
+#scrap .type a {
+  padding-left: 30px;
+  /* outline: 1px solid red; */
+  margin-right: 30px;
+  line-height: 30px;
+  cursor: default;
+}
+#scrap .type a.general {
+  background: url("../../img/type01.png") no-repeat left;
+}
+#scrap .type a.urgent {
+  background: url("../../img/type02.png") no-repeat left;
+}
+#scrap .type a.change {
+  background: url("../../img/type03.png") no-repeat left;
+}
+#scrap .type a.beforehand {
+  background: url("../../img/type04.png") no-repeat left;
+}
+#scrap .type a.bid {
+  background: url("../../img/type05.png") no-repeat left;
+}
+#scrap .type a.announce {
+  background: url("../../img/type06.png") no-repeat left;
+}
+#scrap .type a.re-bid {
+  background: url("../../img/type07.png") no-repeat left;
+}
+
+.table_scrap.star_off {
+  background: url("../../img/star_off.svg") no-repeat;
+}
+
+.table_scrap.star_on {
+  background: url("../../img/star_on.svg") no-repeat;
+  opacity: 0.8;
+}
+
+#scrap .table_scrap {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+}
+
+td.info {
+  position: relative;
+}
+
+#scrap .top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+#scrap .top .soating label {
+  margin-right: 20px;
+  font-size: 18px;
+}
+#scrap .top .soating select {
+  height: 40px;
+  border: 1px solid #d9d9d9;
+  font-family: "Pretendard-Medium";
+  color: #666;
+  box-sizing: border-box;
+  padding-left: 10px;
+  font-size: 15px;
+  padding-right: 20px;
+}
+
+#scrap .top .re_search input {
+  height: 40px;
+  border: 1px solid #d9d9d9;
+  font-family: "Pretendard-Medium";
+  color: #666;
+  box-sizing: border-box;
+  padding-left: 10px;
+  font-size: 15px;
+  padding-right: 20px;
+  margin-right: 15px;
+}
+
+#scrap .top .re_search button {
+  color: #fff;
+  background-color: #346397;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 15px;
+  font-family: "Pretendard-Medium";
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s;
+  height: 40px;
+}
+
+#scrap .pager {
+  width: 100%;
+  text-align: center;
+  margin-top: 70px;
+  margin-bottom: 120px;
+}
+
+#scrap .pager > span {
+  width: 35px;
+  height: 25px;
+  display: inline-block;
+  margin-top: 10px;
+  padding-top: 10px;
+  background-color: #fff;
+  border: 1px solid #d9d9d9;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+#scrap span.active {
+  background-color: #76c3c5;
+  color: #fff;
+  border: none;
+  padding-top: 12px;
+  width: 37px;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* 슬라이드 */
+
+#scrap .project_list_scrap {
+  position: relative;
+
+  background: url("../../img/body_bg.jpg") no-repeat;
+  background-position: bottom;
+  background-size: 100%;
+}
+
+.blind {
+  font-size: 0;
+}
+
+#scrap .project_list_scrap {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+#scrap .project_list_scrap .all_list_scrap {
+  display: flex !important;
+  transition: all 0.3s ease-in-out;
+}
+
+#scrap .project_list_scrap .all_list::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+#scrap .project_list_scrap .all_list_scrap li {
+  flex: 0 0 31.66%;
+  margin-right: 2.5%;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border: 2px solid #eeeef1;
+  background-color: #fff;
+
+  margin-bottom: 30px;
+
+  box-sizing: border-box;
+
+  padding: 20px;
+
+  transition: border-color 0.2s ease; /* border-color에만 transition 적용 */
+}
+
+#scrap .project_list_scrap .all_list_scrap li:hover {
+  border: 2px solid #64aeb1;
+}
+
+/* #scrap .project_list .all_list li:nth-child(3n) {
+  margin-right: 0;
+} */
+
+#scrap .project_list_scrap .all_list_scrap li.project_box_scrap .flex_01 {
+  margin-bottom: 20px;
+}
+
+#scrap .project_list_scrap .all_list_scrap li.project_box_scrap .flex_01 p {
+  width: 350px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+#scrap .project_list_scrap .all_list_scrap li.project_box_scrap h3 {
+  width: 350px;
+  height: 60px;
+  line-height: 25px;
+  font-size: 20px;
+
+  /* white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden; */
+  margin-bottom: 12px;
+
+  font-weight: bold;
+}
+
+#scrap .project_list_scrap .all_list_scrap li.project_box_scrap .des1 {
+  border: 1px solid #64aeb1;
+  padding: 5px 10px;
+  border-radius: 15px;
+  margin-right: 5px;
+  display: inline-block;
+  font-size: 15px;
+}
+#scrap .project_list_scrap .all_list_scrap li.project_box_scrap .des2 {
+  border: 1px solid #64aeb1;
+  padding: 5px 10px;
+  border-radius: 15px;
+  margin-right: 5px;
+  display: inline-block;
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+#scrap .project_list_scrap .all_list_scrap li.project_box_scrap .pj_description {
+  font-size: 16px;
+  color: #888;
+  font-weight: 400;
+  margin-bottom: 15px;
+}
+#scrap .project_list_scrap .all_list_scrap li.project_box_scrap .pj_price {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+#scrap .project_list_scrap .all_list_scrap li.project_box_scrap .no_str {
+  color: #ff8168;
+}
+
+#scrap .project_list_scrap .all_list_scrap li.project_box_scrap .flex_02 {
+  display: flex;
+  justify-content: space-between;
+}
+
+#scrap .project_list_scrap .all_list_scrap li.project_box_scrap .flex_02 button {
+  cursor: pointer;
+  /* outline: 1px solid red; */
+  border: none;
+  width: 20px;
+  height: 20px;
+}
+
+#scrap .project_box .flex_02 button.star_off {
+  background: url("../../img/star_off.svg") no-repeat;
+}
+#scrap .project_box .flex_02 button.star_on {
+  background: url("../../img/star_on.svg") no-repeat;
+  opacity: 0.6;
+}
+
+
+#scrap .tit_flex {
+  display: flex;
+}
+#scrap .tit_flex2 {
+  display: flex;
+  align-items: center;
+  margin-bottom: 60px;
+
+  background-color: #f5f5f5;
+  padding: 30px 20px;
+  border-radius: 10px;
+  color: #999;
+  
+  font-size: 15px;
+}
+
+#scrap .lastst_notice {
+  display: flex;
+  align-items: center;
+}
+#scrap .lastst_notice > h6 {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+#scrap .tit_flex2 span {
+  color: #f0915b;
+}
+
+#scrap .lastst-soating button {
+  margin-right: 20px;
+  background-color: #fff !important;
+  border: 1px solid #d9d9d9 !important;
+  color: #666 !important;
+}
+#scrap .lastst-soating button:hover {
+  background-color: #eeeef1 !important;
+}
+#scrap .flex_2 {
+  display: flex;
+  align-items: center;
+}
