@@ -32,7 +32,6 @@ const fetcher = (url: string) =>
   });
 
 export default function Home() {
-  console.log("test");
   const router = useRouter();
   const { data, error, isLoading, mutate } = useSWR("/api/main", fetcher);
   const { handleSubmit, register, setValue, getValues } = useForm<FormType>({
