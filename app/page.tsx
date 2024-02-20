@@ -32,6 +32,7 @@ const fetcher = (url: string) =>
   });
 
 export default function Home() {
+  console.log("test");
   const router = useRouter();
   const { data, error, isLoading, mutate } = useSWR("/api/main", fetcher);
   const { handleSubmit, register, setValue, getValues } = useForm<FormType>({
@@ -88,10 +89,18 @@ export default function Home() {
       });
     }
     router.push(
-      `/searchpage?dateRadio=${formData.dateRadio}&applicable=${formData.applicable}&bidSelect=${formData.bidSelect}&dateStart=${formData.dateStart}&dateEnd=${formData.dateEnd}&dateRadio=${formData.dateRadio}&condition=${formData.condition}&searchKeyword=${searchString.slice(
+      `/searchpage?dateRadio=${formData.dateRadio}&applicable=${formData.applicable}&bidSelect=${
+        formData.bidSelect
+      }&dateStart=${formData.dateStart}&dateEnd=${formData.dateEnd}&dateRadio=${
+        formData.dateRadio
+      }&condition=${formData.condition}&searchKeyword=${searchString.slice(
         0,
         -1
-      )}&exceptionKeyword=${exceptionString.slice(0, -1)}&sourceSelect=${formData.sourceSelect}&announcementSelect=${formData.announcementSelect}&announcementSelectKeyword=${formData.announcementSelectKeyword}&page=1`
+      )}&exceptionKeyword=${exceptionString.slice(0, -1)}&sourceSelect=${
+        formData.sourceSelect
+      }&announcementSelect=${formData.announcementSelect}&announcementSelectKeyword=${
+        formData.announcementSelectKeyword
+      }&page=1`
     );
   };
 
@@ -165,10 +174,22 @@ export default function Home() {
   return (
     <>
       {/* 동적배너 + 로그인영역 */}
-      <MainBanner mainMutate={mutate} bookMarkCount={data?.bookMarkCount} recentAnnouncementCount={data?.recentAnnouncementCount}></MainBanner>
+      <MainBanner
+        mainMutate={mutate}
+        bookMarkCount={data?.bookMarkCount}
+        recentAnnouncementCount={data?.recentAnnouncementCount}
+      ></MainBanner>
 
       {/* 검색 바 */}
-      <SearchBar handleSubmit={handleSubmit} register={register} onSubmit={onSubmit} onChange={onChange} data={data} onClickApplicable={onClickApplicable} dateOnChange={dateOnChange}></SearchBar>
+      <SearchBar
+        handleSubmit={handleSubmit}
+        register={register}
+        onSubmit={onSubmit}
+        onChange={onChange}
+        data={data}
+        onClickApplicable={onClickApplicable}
+        dateOnChange={dateOnChange}
+      ></SearchBar>
 
       {/* 카드형식 공고리스트 */}
       <ProjectList data={data} isLoading={isLoading} mutate={mutate}></ProjectList>
