@@ -9,7 +9,7 @@ const fetcher = (url: string) =>
     })
     .catch((e) => console.error(e));
 
-const useUser = () => {
+export const useUser = () => {
   const { data, isLoading, mutate } = useSWR("/api/user", fetcher);
   return {
     data,
@@ -17,5 +17,3 @@ const useUser = () => {
     mutate,
   };
 };
-
-export default useUser;

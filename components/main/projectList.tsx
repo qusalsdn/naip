@@ -8,7 +8,6 @@ import { Xmark, Star, StarSolid, OpenInWindow } from "iconoir-react";
 import { useState } from "react";
 
 import axios from "axios";
-import useUser from "@/libs/useUser";
 
 import Image from "next/image";
 import mlogo from "@/public/img/slogan2.png";
@@ -16,7 +15,7 @@ import Type01 from "@/public/img/type01.png";
 import Type02 from "@/public/img/type02.png";
 import Type04 from "@/public/img/type04.png";
 import Type07 from "@/public/img/type07.png";
-import useSWR from "swr";
+import { useUser } from "@/libs/useUser";
 
 interface ResponseDataType {
   list_id: number;
@@ -51,15 +50,7 @@ interface PropsType {
 }
 
 export default function projectList({ data, isLoading, mutate }: PropsType) {
-  const fetcher = (url: string) =>
-    axios
-      .get(url)
-      .then((res) => {
-        return res.data;
-      })
-      .catch((e) => console.error(e));
-
-  const { data: userCheck } = useSWR("/api/user", fetcher);
+  const { data: userCheck } = useUser();
 
   const toggleStar = (listId: number, bookMarkCheck: boolean) => {
     axios.post("/api/bookMark", { listId, bookMarkCheck }).then((res) => {

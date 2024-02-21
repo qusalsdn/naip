@@ -7,9 +7,9 @@ import "../public/style/header.css";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "@/public/img/main_logo5.png";
-import useUser from "@/libs/useUser";
+
 import axios from "axios";
-import useSWR from "swr";
+import { useUser } from "@/libs/useUser";
 
 export default function Header() {
   const pathname = usePathname();
@@ -33,15 +33,7 @@ export default function Header() {
     setIsSubMenuOpen(false);
   };
 
-  const fetcher = (url: string) =>
-    axios
-      .get(url)
-      .then((res) => {
-        return res.data;
-      })
-      .catch((e) => console.error(e));
-
-  const { data, isLoading, mutate } = useSWR("/api/user", fetcher);
+  const { data, isLoading, mutate } = useUser();
   const router = useRouter();
   const onClickSignOutBtn = () => {
     axios.get("/api/user/signOut").then((res) => {
