@@ -6,6 +6,7 @@ import { faPowerOff } from "@fortawesome/free-solid-svg-icons";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import useUser from "../../libs/useUser";
+import useSWR from "swr";
 
 export default function MainBanner({ mainMutate, bookMarkCount, recentAnnouncementCount }: any) {
   const { register, handleSubmit, reset } = useForm();
@@ -47,7 +48,15 @@ export default function MainBanner({ mainMutate, bookMarkCount, recentAnnounceme
     setCurrentBanner(id);
   };
 
-  const { data, isLoading, mutate } = useUser();
+  const fetcher = (url: string) =>
+    axios
+      .get(url)
+      .then((res) => {
+        return res.data;
+      })
+      .catch((e) => console.error(e));
+
+  const { data, isLoading, mutate } = useSWR("/api/user", fetcher);
 
   const [loginFailedModalOpen, setLoginFailedModalOpen] = useState(false);
 

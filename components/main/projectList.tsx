@@ -16,6 +16,7 @@ import Type01 from "@/public/img/type01.png";
 import Type02 from "@/public/img/type02.png";
 import Type04 from "@/public/img/type04.png";
 import Type07 from "@/public/img/type07.png";
+import useSWR from "swr";
 
 interface ResponseDataType {
   list_id: number;
@@ -50,7 +51,15 @@ interface PropsType {
 }
 
 export default function projectList({ data, isLoading, mutate }: PropsType) {
-  const { data: userCheck } = useUser();
+  const fetcher = (url: string) =>
+    axios
+      .get(url)
+      .then((res) => {
+        return res.data;
+      })
+      .catch((e) => console.error(e));
+
+  const { data: userCheck } = useSWR("/api/user", fetcher);
 
   const toggleStar = (listId: number, bookMarkCheck: boolean) => {
     axios.post("/api/bookMark", { listId, bookMarkCheck }).then((res) => {
