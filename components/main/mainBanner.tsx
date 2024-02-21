@@ -82,14 +82,22 @@ export default function MainBanner({ mainMutate, bookMarkCount, recentAnnounceme
           <div className="main_banner_box">
             <div className="slide">
               {banners.map((banner, index) => (
-                <div key={banner.id} className={`banner ${currentBanner === banner.id ? "fade-in" : ""}`} style={{ zIndex: currentBanner === banner.id ? 1 : 0 }}>
+                <div
+                  key={banner.id}
+                  className={`banner ${currentBanner === banner.id ? "fade-in" : ""}`}
+                  style={{ zIndex: currentBanner === banner.id ? 1 : 0 }}
+                >
                   {banner.content}
                 </div>
               ))}
             </div>
             <div className="pagination">
               {banners.map((banner) => (
-                <span key={banner.id} className={currentBanner === banner.id ? "active" : ""} onClick={() => handlePaginationClick(banner.id)}>
+                <span
+                  key={banner.id}
+                  className={currentBanner === banner.id ? "active" : ""}
+                  onClick={() => handlePaginationClick(banner.id)}
+                >
                   {banner.id + 1}
                 </span>
               ))}
@@ -138,8 +146,16 @@ export default function MainBanner({ mainMutate, bookMarkCount, recentAnnounceme
 
                   <div className="flex">
                     <div className="login_input">
-                      <input type="text" {...register("id", { required: true })} placeholder="아이디를 입력하세요." />
-                      <input type="password" {...register("pw", { required: true })} placeholder="비밀번호를 입력하세요." />
+                      <input
+                        type="text"
+                        {...register("id", { required: true })}
+                        placeholder="아이디를 입력하세요."
+                      />
+                      <input
+                        type="password"
+                        {...register("pw", { required: true })}
+                        placeholder="비밀번호를 입력하세요."
+                      />
                     </div>
                     <div className="login_btn">
                       <span className="login_btn_icon">
@@ -169,8 +185,16 @@ export default function MainBanner({ mainMutate, bookMarkCount, recentAnnounceme
 
                 <div className="flex">
                   <div className="login_input">
-                    <input type="text" {...register("id", { required: true })} placeholder="아이디를 입력하세요." />
-                    <input type="password" {...register("pw", { required: true })} placeholder="비밀번호를 입력하세요." />
+                    <input
+                      type="text"
+                      {...register("id", { required: true })}
+                      placeholder="아이디를 입력하세요."
+                    />
+                    <input
+                      type="password"
+                      {...register("pw", { required: true })}
+                      placeholder="비밀번호를 입력하세요."
+                    />
                   </div>
                   <div className="login_btn">
                     <span className="login_btn_icon">

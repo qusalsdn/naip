@@ -18,7 +18,9 @@ export async function GET(req: NextRequest) {
       );
       if (recentData.length !== 0) {
         for (const item of recentData) {
-          const [price] = await connection.execute(`select max(price) from file_table where name='${item.name}'`);
+          const [price] = await connection.execute(
+            `select max(price) from file_table where name='${item.name}'`
+          );
           if (price[0]["max(price)"] !== null) {
             item.price = price[0]["max(price)"].toLocaleString("ko-KR");
           } else item.price = "-";
@@ -33,7 +35,9 @@ export async function GET(req: NextRequest) {
       }
 
       let bookMarkData: any[] = [];
-      const [bookMarkIds] = await connection.execute(`select listId from bookMark where uid=${uid[0].uid} order by createDT desc limit 0, 10`);
+      const [bookMarkIds] = await connection.execute(
+        `select listId from bookMark where uid=${uid[0].uid} order by createDT desc limit 0, 10`
+      );
       if (bookMarkIds.length !== 0) {
         const listIds1 = bookMarkIds.map((item: any) => item.listId);
         const placeholders1 = listIds1.map(() => "?").join(",");
@@ -41,7 +45,38 @@ export async function GET(req: NextRequest) {
         [bookMarkData] = await connection.execute(query1, listIds1);
 
         for (const item of bookMarkData) {
-          const [price] = await connection.execute(`select max(price) from file_table where name='${item.name}'`);
+          const [price] = await connection.execute(
+            `select max(price) from file_table where name='${item.name}'`
+          );
+          if (price[0]["max(price)"] !== null) {
+            item.price = price[0]["max(price)"].toLocaleString("ko-KR");
+          } else item.price = "-";
+
+          const targetDate = new Date(item.end_date);
+          if (!isNaN(targetDate.getTime())) {
+            const timeDifference = targetDate.getTime() - today.getTime();
+            const daysRemaining = Math.ceil(timeDifference / (1000 * 3600 * 24));
+            item.terminationDate = daysRemaining.toString();
+          } else item.terminationDate = "-";
+        }
+      }
+
+      let keywordData: any[] = [];
+      const [[{ keyword }]] = await connection.execute(
+        `select keyword from userInfo where token='${token}'`
+      );
+      const keywords: string = keyword;
+      [keywordData] = await connection.execute(
+        `select * from list_table_test where name regexp('${keywords.replaceAll(
+          ",",
+          "|"
+        )}') order by input_date desc limit 0, 10`
+      );
+      if (keywordData.length !== 0) {
+        for (const item of keywordData) {
+          const [price] = await connection.execute(
+            `select max(price) from file_table where name='${item.name}'`
+          );
           if (price[0]["max(price)"] !== null) {
             item.price = price[0]["max(price)"].toLocaleString("ko-KR");
           } else item.price = "-";
@@ -56,7 +91,7 @@ export async function GET(req: NextRequest) {
       }
 
       await connection.end();
-      return NextResponse.json({ data: { recentData, bookMarkData } });
+      return NextResponse.json({ data: { recentData, bookMarkData, keywordData } });
     } else {
       await connection.end();
       return NextResponse.json({ ok: false });
