@@ -8,7 +8,6 @@ import { useRouter } from "next/navigation";
 import MainBanner from "@/components/main/mainBanner";
 import SearchBar from "@/components/main/searchBar";
 import ProjectList from "@/components/main/projectList";
-import Notice from "@/components/main/notice";
 import FAQ from "@/components/main/faq";
 import useSWR from "swr";
 
@@ -33,7 +32,7 @@ const fetcher = (url: string) =>
 
 export default function Home() {
   const router = useRouter();
-  const { data, error, isLoading, mutate } = useSWR("/api/main", fetcher);
+  const { data, isLoading, mutate } = useSWR("/api/main", fetcher);
   const { handleSubmit, register, setValue, getValues } = useForm<FormType>({
     defaultValues: {
       dateRadio: "dateAll",

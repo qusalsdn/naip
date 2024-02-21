@@ -6,11 +6,13 @@ const fetcher = (url: string) =>
     return res.data;
   });
 
-export default function useUser() {
+const useUser = () => {
   const { data, isLoading, mutate } = useSWR("/api/user", fetcher);
   return {
     data,
     isLoading,
     mutate,
   };
-}
+};
+
+export default useUser;
