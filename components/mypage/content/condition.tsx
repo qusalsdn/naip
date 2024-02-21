@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import MyFooter from "@/components/mypage/myFooter";
 import "../../../public/style/projectlist.css";
 import "../../../public/style/mypage/condition.css";

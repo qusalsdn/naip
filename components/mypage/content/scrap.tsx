@@ -20,13 +20,7 @@ import Link from "next/link";
 import axios from "axios";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faChevronRight,
-  faChevronLeft,
-  faAngleRight,
-  faAnglesLeft,
-  faAnglesRight,
-} from "@fortawesome/free-solid-svg-icons";
+import { faChevronRight, faChevronLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { useForm } from "react-hook-form";
 
 interface ResponseDataType {

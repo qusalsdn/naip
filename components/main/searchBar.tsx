@@ -21,7 +21,15 @@ interface PropsType {
   dateOnChange: any;
 }
 
-export default function SearchBar({ handleSubmit, register, onSubmit, onChange, data, onClickApplicable, dateOnChange }: PropsType) {
+export default function SearchBar({
+  handleSubmit,
+  register,
+  onSubmit,
+  onChange,
+  data,
+  onClickApplicable,
+  dateOnChange,
+}: PropsType) {
   const [searchFrmVisible, setSearchFrmVisible] = useState(false);
   const [exceptKeywordVisible, setExceptKeywordVisible] = useState(false);
 
@@ -161,15 +169,33 @@ export default function SearchBar({ handleSubmit, register, onSubmit, onChange, 
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="able">
                 <label>
-                  <input {...register("dateRadio")} name="dateRadio" type="radio" value="dateAll" onChange={onChange} />
+                  <input
+                    {...register("dateRadio")}
+                    name="dateRadio"
+                    type="radio"
+                    value="dateAll"
+                    onChange={onChange}
+                  />
                   전체
                 </label>
                 <label>
-                  <input {...register("dateRadio")} name="dateRadio" type="radio" value="toDayRegistration" onChange={onChange} />
+                  <input
+                    {...register("dateRadio")}
+                    name="dateRadio"
+                    type="radio"
+                    value="toDayRegistration"
+                    onChange={onChange}
+                  />
                   오늘 등록
                 </label>
                 <label>
-                  <input {...register("dateRadio")} name="dateRadio" type="radio" value="todayDeadline" onChange={onChange} />
+                  <input
+                    {...register("dateRadio")}
+                    name="dateRadio"
+                    type="radio"
+                    value="todayDeadline"
+                    onChange={onChange}
+                  />
                   오늘 마감
                 </label>
                 <label>
@@ -190,17 +216,40 @@ export default function SearchBar({ handleSubmit, register, onSubmit, onChange, 
                 </select>
                 <input {...register("dateStart")} type="date" onChange={dateOnChange} />
                 <span>~</span>
-                <input {...register("dateEnd")} className="last" type="date" onChange={dateOnChange} />
+                <input
+                  {...register("dateEnd")}
+                  className="last"
+                  type="date"
+                  onChange={dateOnChange}
+                />
                 <label>
-                  <input {...register("dateRadio")} name="dateRadio" type="radio" value="1month" onChange={onChange} />
+                  <input
+                    {...register("dateRadio")}
+                    name="dateRadio"
+                    type="radio"
+                    value="1month"
+                    onChange={onChange}
+                  />
                   최근 1개월
                 </label>
                 <label>
-                  <input {...register("dateRadio")} name="dateRadio" type="radio" value="3month" onChange={onChange} />
+                  <input
+                    {...register("dateRadio")}
+                    name="dateRadio"
+                    type="radio"
+                    value="3month"
+                    onChange={onChange}
+                  />
                   최근 3개월
                 </label>
                 <label>
-                  <input {...register("dateRadio")} name="dateRadio" type="radio" value="6month" onChange={onChange} />
+                  <input
+                    {...register("dateRadio")}
+                    name="dateRadio"
+                    type="radio"
+                    value="6month"
+                    onChange={onChange}
+                  />
                   최근 6개월
                 </label>
               </div>
@@ -223,7 +272,11 @@ export default function SearchBar({ handleSubmit, register, onSubmit, onChange, 
                     <option value="public">공고기관</option>
                     <option value="demand">수요기관</option>
                   </select>
-                  <input {...register("announcementSelectKeyword")} type="text" placeholder="공고/수요기관을 입력하세요" />
+                  <input
+                    {...register("announcementSelectKeyword")}
+                    type="text"
+                    placeholder="공고/수요기관을 입력하세요"
+                  />
                 </div>
               )}
 
@@ -242,13 +295,25 @@ export default function SearchBar({ handleSubmit, register, onSubmit, onChange, 
 
               <div className="search-bar">
                 <p>검색 키워드 입력</p>
-                <input {...register("searchKeyword")} type="search" placeholder="키워드로 검색해 보세요 (여러 개 입력 시 콤마(,) 로 구분)" />
-                <input type="submit" value="검색하기" className={searchFrmVisible ? "active" : ""}></input>
+                <input
+                  {...register("searchKeyword")}
+                  type="search"
+                  placeholder="키워드로 검색해 보세요 (여러 개 입력 시 콤마(,) 로 구분)"
+                />
+                <input
+                  type="submit"
+                  value="검색하기"
+                  className={searchFrmVisible ? "active" : ""}
+                ></input>
               </div>
               {searchFrmVisible && (
                 <div className="except_keyword">
                   <p>제외 키워드 입력</p>
-                  <input type="text" {...register("exceptionKeyword")} placeholder="제외하여 검색할 키워드를 입력하세요 (여러 개 입력 시 콤마(,)로 구분)" />
+                  <input
+                    type="text"
+                    {...register("exceptionKeyword")}
+                    placeholder="제외하여 검색할 키워드를 입력하세요 (여러 개 입력 시 콤마(,)로 구분)"
+                  />
                 </div>
               )}
               {/* 마이키워드 적용 / 로그인 시 주석 해제 */}

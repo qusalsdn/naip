@@ -1,19 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 
 import "../../../../public/style/community/notice.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faQuestion,
-  faAngleRight,
-  faAnglesLeft,
-  faAnglesRight,
-  faChevronLeft,
-  faChevronRight,
-} from "@fortawesome/free-solid-svg-icons";
-import Pagination from "react-js-pagination";
 
 export default function NoticeDetail() {
   return (

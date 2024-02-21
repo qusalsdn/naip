@@ -73,13 +73,15 @@ export default function Joinpage() {
               <b>개인정보 수집ㆍ이용 동의서</b>
               <br />
               <br />
-              ㈜디로그는(이하 ‘디로그’)는 사업검색 플랫폼 내일스퀘어의 회원가입과 관련하여 아래와 같이 개인정보를 수집ㆍ이용 하고자 합니다. 내용을 자세히 읽으신 후 동의
-              여부를 결정하여 주시기 바랍니다.
+              ㈜디로그는(이하 ‘디로그’)는 사업검색 플랫폼 내일스퀘어의 회원가입과 관련하여 아래와
+              같이 개인정보를 수집ㆍ이용 하고자 합니다. 내용을 자세히 읽으신 후 동의 여부를 결정하여
+              주시기 바랍니다.
               <br />
               <br />
               1. 개인정보 수집ㆍ이용 목적
               <br />
-              키워드 매칭 공고 및 뉴스레터 제공 등 사이트 이용자가 프로젝트 참여를 하기 위한 공고 정보 및 맟춤 공고 서비스 제공
+              키워드 매칭 공고 및 뉴스레터 제공 등 사이트 이용자가 프로젝트 참여를 하기 위한 공고
+              정보 및 맟춤 공고 서비스 제공
               <br />
               <br />
               2. 개인정보 수집이용 내역
@@ -99,20 +101,39 @@ export default function Joinpage() {
               최종 접속일로부터 3년
               <br />
               <br />
-              4. 위의 개인정보 수집ㆍ이용에 대한 동의를 거부할 권리가 있습니다. 그러나 동의를 거부할 경우 서비스 이용에 제한을 받을 수 있습니다.
+              4. 위의 개인정보 수집ㆍ이용에 대한 동의를 거부할 권리가 있습니다. 그러나 동의를 거부할
+              경우 서비스 이용에 제한을 받을 수 있습니다.
             </div>
             <div className="agree-bottom">
               <div className="mb-1">
-                <input type="checkbox" id="nessCheck" checked={isChecked1} onChange={handleChange1} style={{ display: "none" }} />
+                <input
+                  type="checkbox"
+                  id="nessCheck"
+                  checked={isChecked1}
+                  onChange={handleChange1}
+                  style={{ display: "none" }}
+                />
                 <label htmlFor="nessCheck">
-                  <FontAwesomeIcon icon={isChecked1 ? fasCircleCheck : farCircleCheck} className={`${isChecked1 ? "text-blue-400" : "text-gray-300"} text-[25px] mr-2`} />
+                  <FontAwesomeIcon
+                    icon={isChecked1 ? fasCircleCheck : farCircleCheck}
+                    className={`${isChecked1 ? "text-blue-400" : "text-gray-300"} text-[25px] mr-2`}
+                  />
                   <span className="text-red-500">(필수)&nbsp;</span> 개인정보 수집 및 이용 동의
                 </label>
               </div>
               <div>
-                <input type="checkbox" id="unnessCheck" checked={isChecked2} onChange={handleChange2} style={{ display: "none" }} />
+                <input
+                  type="checkbox"
+                  id="unnessCheck"
+                  checked={isChecked2}
+                  onChange={handleChange2}
+                  style={{ display: "none" }}
+                />
                 <label htmlFor="unnessCheck">
-                  <FontAwesomeIcon icon={isChecked2 ? fasCircleCheck : farCircleCheck} className={`${isChecked2 ? "text-blue-400" : "text-gray-300"} text-[25px] mr-2`} />
+                  <FontAwesomeIcon
+                    icon={isChecked2 ? fasCircleCheck : farCircleCheck}
+                    className={`${isChecked2 ? "text-blue-400" : "text-gray-300"} text-[25px] mr-2`}
+                  />
                   <span>(선택)&nbsp;</span>개인정보 수집 및 이용 동의
                 </label>
               </div>
@@ -122,7 +143,10 @@ export default function Joinpage() {
             {/* <Link href='/joinpage'><button className='px-5 py-2 rounded-[50px] bg-gray-300 hover:bg-gray-400 duration-150 text-white mr-2'>이전으로</button></Link>
                 {!isChecked1 ? (<button onClick={handleNextClick} className='px-5 py-2 rounded-[50px] bg-blue-500 hover:bg-blue-600 duration-150 text-white'>다음으로</button>) : (<Link href="/joinpage/buyer/info"><button onClick={handleNextClick} className='px-5 py-2 rounded-[50px] bg-blue-500 hover:bg-blue-600 duration-150 text-white'>다음으로</button></Link>)} */}
 
-            <button onClick={handleNextClick} className="px-5 py-2 rounded-[50px] bg-blue-500 hover:bg-blue-600 duration-150 text-white">
+            <button
+              onClick={handleNextClick}
+              className="px-5 py-2 rounded-[50px] bg-blue-500 hover:bg-blue-600 duration-150 text-white"
+            >
               다음으로
             </button>
           </div>
@@ -130,7 +154,15 @@ export default function Joinpage() {
             <div className="agree-modal">
               {/* 모달 백그라운드 */}
               <div
-                style={{ position: "fixed", top: "0", left: "0", right: "0", bottom: "0", backgroundColor: "rgba(0,0,0,0.2)", zIndex: "999998" }}
+                style={{
+                  position: "fixed",
+                  top: "0",
+                  left: "0",
+                  right: "0",
+                  bottom: "0",
+                  backgroundColor: "rgba(0,0,0,0.2)",
+                  zIndex: "999998",
+                }}
                 onClick={() => setCheckModalOpen(false)}
               />
               {/* 실제 모달 창 */}
@@ -151,7 +183,10 @@ export default function Joinpage() {
                 <p className="py-[50px] text-[18px]">필수항목에 동의해주세요.</p>
                 <hr />
                 <div className="py-[20px]">
-                  <button onClick={() => setCheckModalOpen(false)} className="text-white bg-blue-400 hover:bg-blue-500 duration-150 rounded-[5px] px-7 py-3">
+                  <button
+                    onClick={() => setCheckModalOpen(false)}
+                    className="text-white bg-blue-400 hover:bg-blue-500 duration-150 rounded-[5px] px-7 py-3"
+                  >
                     확인
                   </button>
                 </div>

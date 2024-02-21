@@ -4,7 +4,7 @@
 import "../../public/style/projectlist.css";
 import Link from "next/link";
 
-import { Xmark, Star, StarSolid, OpenInWindow } from "iconoir-react";
+import { Xmark, Star, StarSolid } from "iconoir-react";
 import { useState } from "react";
 
 import axios from "axios";

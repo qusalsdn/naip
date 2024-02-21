@@ -72,10 +72,14 @@ export default function JoinSuccess() {
             </div>
             <div className="succes_btn absolute -bottom-[170px] left-1/2 transform -translate-x-1/2">
               <Link href="/" className="block w-[400px]">
-                <button className="block w-full text-[18px] ring-1 ring-blue-500 ring-inset text-blue-500 py-2.5 rounded-[50px]">메인으로</button>
+                <button className="block w-full text-[18px] ring-1 ring-blue-500 ring-inset text-blue-500 py-2.5 rounded-[50px]">
+                  메인으로
+                </button>
               </Link>
               <Link href="/loginpage" className="block w-[400px]">
-                <button className="block w-full mt-2 text-[18px] bg-blue-500 hover:bg-blue-600 duration-150 text-white py-2.5 rounded-[50px]">로그인</button>
+                <button className="block w-full mt-2 text-[18px] bg-blue-500 hover:bg-blue-600 duration-150 text-white py-2.5 rounded-[50px]">
+                  로그인
+                </button>
               </Link>
             </div>
           </div>

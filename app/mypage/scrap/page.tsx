@@ -5,7 +5,7 @@ import ScrapComponent from "@/components/mypage/content/scrap";
 import MyHeader from "@/components/mypage/myHeader";
 
 import "../../../public/style/mypage/mypage.css";
-import useUser from "@/libs/useUser";
+import { useUser } from "@/libs/useUser";
 import { useRouter } from "next/navigation";
 
 export default function Scrap() {

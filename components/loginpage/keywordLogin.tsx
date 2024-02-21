@@ -22,7 +22,7 @@ export default function KeywordLogin() {
   const handleCheckboxChange2 = () => {
     setIsKeepLoginChecked(!isKeepLoginChecked);
   };
-  
+
   const [loginFailedModalOpen, setLoginFailedModalOpen] = useState(false);
 
   const handleModalClose = () => {
@@ -32,9 +32,9 @@ export default function KeywordLogin() {
   const onSubmit = (data: any) => {
     axios.get(`/api/user/signIn?id=${data.id}&pw=${data.pw}`).then((res) => {
       if (res.data.ok) {
-        router.replace("/mypage/notify")
+        router.replace("/mypage/notify");
       } else {
-        setLoginFailedModalOpen(true);   
+        setLoginFailedModalOpen(true);
       }
     });
   };
@@ -51,18 +51,41 @@ export default function KeywordLogin() {
           <form onSubmit={handleSubmit(onSubmit)} className="input_box">
             <div className="option">
               <div className="cntr">
-                <input className="hidden-xs-up" id="cbx" type="checkbox" checked={isIdSaveChecked} onChange={handleCheckboxChange} />
+                <input
+                  className="hidden-xs-up"
+                  id="cbx"
+                  type="checkbox"
+                  checked={isIdSaveChecked}
+                  onChange={handleCheckboxChange}
+                />
                 <label htmlFor="cbx" className={`cbx ${isIdSaveChecked ? "checked" : ""}`}></label>
               </div>
               <p onClick={handleCheckboxChange}>아이디 저장</p>
               <div className="cntr2">
-                <input className="hidden-xs-up2" id="cbx2" type="checkbox" checked={isKeepLoginChecked} onChange={handleCheckboxChange2} />
-                <label htmlFor="cbx2" className={`cbx2 ${isKeepLoginChecked ? "checked2" : ""}`}></label>
+                <input
+                  className="hidden-xs-up2"
+                  id="cbx2"
+                  type="checkbox"
+                  checked={isKeepLoginChecked}
+                  onChange={handleCheckboxChange2}
+                />
+                <label
+                  htmlFor="cbx2"
+                  className={`cbx2 ${isKeepLoginChecked ? "checked2" : ""}`}
+                ></label>
               </div>
               <p onClick={handleCheckboxChange2}>로그인 유지</p>
             </div>
-            <input type="text" {...register("id", { required: true })} placeholder="아이디를 입력하세요." />
-            <input type="password" {...register("pw", { required: true })} placeholder="비밀번호를 입력하세요." />
+            <input
+              type="text"
+              {...register("id", { required: true })}
+              placeholder="아이디를 입력하세요."
+            />
+            <input
+              type="password"
+              {...register("pw", { required: true })}
+              placeholder="비밀번호를 입력하세요."
+            />
             <div className="login_btn">
               <button type="submit" className="submit">
                 <span className="sign-text">로그인</span>

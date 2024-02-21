@@ -54,7 +54,10 @@ export default function JoinInfo() {
   const idRegex = useCallback(() => /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/, []); //아이디
   const pwRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,16}$/; //비밀번호
   const phoneRegex = useCallback(() => /^01([016789]{1})[0-9]{3,4}[0-9]{4}$/, []); //핸드폰번호
-  const emailRegex = useCallback(() => /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])+\.[a-zA-Z]{2,3}$/i, []); //이메일
+  const emailRegex = useCallback(
+    () => /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])+\.[a-zA-Z]{2,3}$/i,
+    []
+  ); //이메일
 
   const validateAddress = (value: any) => {
     //주소
@@ -400,7 +403,12 @@ export default function JoinInfo() {
                   maxLength={16}
                   onKeyDown={handleKeyDown}
                 />
-                <button disabled={!idValid} type="button" className={`${idValid ? "active" : ""}`} onClick={onClickCheckDuplicationBtn}>
+                <button
+                  disabled={!idValid}
+                  type="button"
+                  className={`${idValid ? "active" : ""}`}
+                  onClick={onClickCheckDuplicationBtn}
+                >
                   중복확인
                 </button>
               </div>
@@ -515,7 +523,11 @@ export default function JoinInfo() {
                   placeholder="email@bizmining.com"
                   onKeyDown={handleKeyDown}
                 />
-                <button type="button" onClick={handleEmailSentClick} className={`${emailValid && !isVertifyCodeSent ? "active" : ""}`}>
+                <button
+                  type="button"
+                  onClick={handleEmailSentClick}
+                  className={`${emailValid && !isVertifyCodeSent ? "active" : ""}`}
+                >
                   인증하기
                 </button>
                 <p className="ml-[151px] pt-1 text-xs text-red-500">{emailMessage}</p>
@@ -533,9 +545,13 @@ export default function JoinInfo() {
                     className="certificate"
                   />
                   {isVertifyCodeSent && (
-                    <span className="text-[14px] text-blue-500 absolute right-[163px] top-[14px]">{`${Math.floor(timerCountDown / 60)
+                    <span className="text-[14px] text-blue-500 absolute right-[163px] top-[14px]">{`${Math.floor(
+                      timerCountDown / 60
+                    )
                       .toString()
-                      .padStart(2, "0")}:${(timerCountDown % 60).toString().padStart(2, "0")}`}</span>
+                      .padStart(2, "0")}:${(timerCountDown % 60)
+                      .toString()
+                      .padStart(2, "0")}`}</span>
                   )}
                   <button type="button" onClick={handleVerifyCodeClick} className="active">
                     인증번호확인
@@ -605,7 +621,12 @@ export default function JoinInfo() {
           />
         )}
         {/* 버튼 모달 */}
-        <ModalDefalt isOpen={idModalOpen} message={idModalMessage} onConfirm={() => setIdModalOpen(false)} onClose={() => setIdModalOpen(false)} />
+        <ModalDefalt
+          isOpen={idModalOpen}
+          message={idModalMessage}
+          onConfirm={() => setIdModalOpen(false)}
+          onClose={() => setIdModalOpen(false)}
+        />
 
         <ModalDefalt
           isOpen={emailSentModalOpen}
@@ -637,7 +658,15 @@ export default function JoinInfo() {
         {timerExpiredOpen && (
           <div>
             <div
-              style={{ position: "fixed", top: "0", left: "0", right: "0", bottom: "0", backgroundColor: "rgba(0,0,0,0.2)", zIndex: "999998" }}
+              style={{
+                position: "fixed",
+                top: "0",
+                left: "0",
+                right: "0",
+                bottom: "0",
+                backgroundColor: "rgba(0,0,0,0.2)",
+                zIndex: "999998",
+              }}
               onClick={handleTimerExpiredClose}
             />
             <div
@@ -656,7 +685,10 @@ export default function JoinInfo() {
               <h1 className="py-[50px] text-[18px]">유효시간이 만료되었습니다</h1>
               <hr />
               <div className="py-[20px]">
-                <button onClick={handleTimerExpiredClose} className="text-white bg-blue-400 hover:bg-blue-500 duration-150 rounded-[5px] px-7 py-3">
+                <button
+                  onClick={handleTimerExpiredClose}
+                  className="text-white bg-blue-400 hover:bg-blue-500 duration-150 rounded-[5px] px-7 py-3"
+                >
                   확인
                 </button>
               </div>

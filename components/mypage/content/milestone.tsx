@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import moment from "moment";
 import Timeline, { TimelineHeaders, SidebarHeader, DateHeader } from "react-calendar-timeline";

@@ -10,11 +10,6 @@ import ModalDefalt from "@/components/joinpage/ModalDefault"; //폼 버튼 모�
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 
-interface ResponseType {
-  ok: boolean;
-  user: UserInfo;
-}
-
 interface UserInfo {
   id: string;
   name: string;
@@ -32,7 +27,8 @@ export default function UserInfoComponent({ isOpen, data, isLoading, mutate }: a
 
   //정규표현식
   const phoneRegex = useCallback(() => /^01([016789]{1})[0-9]{3,4}[0-9]{4}$/, []); //핸드폰번호
-  const emailRegex = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])+\.[a-zA-Z]{2,3}$/i; //이메일
+  const emailRegex =
+    /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])+\.[a-zA-Z]{2,3}$/i; //이메일
   const pwRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,16}$/; //비밀번호
 
   useEffect(() => {
@@ -101,7 +97,10 @@ export default function UserInfoComponent({ isOpen, data, isLoading, mutate }: a
   };
   const onClickPwChangeBtn = () => {
     if (!pwRegex.test(pw0Input)) return alert("기존 비밀번호를 형식에 맞게 입력해주세요.");
-    else if (!pwRegex.test(pw1Input) || !pwRegex.test(pw2Input)) return alert("8~16자 이내의 영문(대, 소문자), 숫자, 특수문자(@, $, !, %, *, #, ?, &) 조합이 아닙니다.");
+    else if (!pwRegex.test(pw1Input) || !pwRegex.test(pw2Input))
+      return alert(
+        "8~16자 이내의 영문(대, 소문자), 숫자, 특수문자(@, $, !, %, *, #, ?, &) 조합이 아닙니다."
+      );
     else if (!pwCheck) return alert("새 비밀번호 확인이 동일하지 않습니다.");
     axios.post("/api/user/update", { pw0: pw0Input, pw1: pw2Input, track: 0 }).then((res) => {
       if (res.data.ok) {
@@ -300,13 +299,10 @@ export default function UserInfoComponent({ isOpen, data, isLoading, mutate }: a
     setIsNewLetterChecked(!isNewLetterChecked);
   };
 
-
-
   //정보수정 취소버튼 클릭 시 페이지 새로고침
   const handleRefresh = () => {
     window.location.reload();
   };
-
 
   //개인정보수집이용동의
 
@@ -332,12 +328,19 @@ export default function UserInfoComponent({ isOpen, data, isLoading, mutate }: a
   const onClickProfileUpdateBtn = () => {
     if (!emailRegex.test(emailInput)) return alert("올바른 형식의 이메일 주소를 입력하세요.");
     else if (addr1Input === "") return alert("주소를 입력해주세요.");
-    axios.post("/api/user/update", { email: emailInput, address1: addr1Input, address2: addr2Input, track: 2 }).then((res) => {
-      if (res.data.ok) {
-        alert("프로필 수정완료!");
-        mutate();
-      } else alert("유저 정보가 존재하지 않습니다.");
-    });
+    axios
+      .post("/api/user/update", {
+        email: emailInput,
+        address1: addr1Input,
+        address2: addr2Input,
+        track: 2,
+      })
+      .then((res) => {
+        if (res.data.ok) {
+          alert("프로필 수정완료!");
+          mutate();
+        } else alert("유저 정보가 존재하지 않습니다.");
+      });
   };
 
   return (
@@ -374,7 +377,13 @@ export default function UserInfoComponent({ isOpen, data, isLoading, mutate }: a
                 <tr>
                   <th>비밀번호</th>
                   <td className="userpw">
-                    <input type="password" value={pw1Input} onChange={handleChange} readOnly placeholder="*********" />
+                    <input
+                      type="password"
+                      value={pw1Input}
+                      onChange={handleChange}
+                      readOnly
+                      placeholder="*********"
+                    />
                     <button onClick={handleChangeModalOpen}>비밀번호 변경</button>
                   </td>
                 </tr>
@@ -407,7 +416,11 @@ export default function UserInfoComponent({ isOpen, data, isLoading, mutate }: a
                       placeholder="'-' 빼고 숫자만 입력"
                       maxLength={11}
                     />
-                    <button type="button" onClick={handlePhoneSentClick} className={`${phoneValid && !isVertifyCodeSent ? "active" : ""}`}>
+                    <button
+                      type="button"
+                      onClick={handlePhoneSentClick}
+                      className={`${phoneValid && !isVertifyCodeSent ? "active" : ""}`}
+                    >
                       재인증하기
                     </button>
                     <p className="alert_msg">{phoneMessage}</p>
@@ -423,9 +436,13 @@ export default function UserInfoComponent({ isOpen, data, isLoading, mutate }: a
                             className="certificate"
                           />
                           {isVertifyCodeSent && (
-                            <span className="text-[14px] text-blue-500 absolute right-[163px] top-[14px]">{`${Math.floor(timerCountDown / 60)
+                            <span className="text-[14px] text-blue-500 absolute right-[163px] top-[14px]">{`${Math.floor(
+                              timerCountDown / 60
+                            )
                               .toString()
-                              .padStart(2, "0")}:${(timerCountDown % 60).toString().padStart(2, "0")}`}</span>
+                              .padStart(2, "0")}:${(timerCountDown % 60)
+                              .toString()
+                              .padStart(2, "0")}`}</span>
                           )}
                           <button type="button" onClick={handleVerifyCodeClick} className="active">
                             인증번호확인
@@ -451,11 +468,22 @@ export default function UserInfoComponent({ isOpen, data, isLoading, mutate }: a
                     />
                     <p className="alert_msg">{emailMessage}</p>
                     <div className="newletter">
-                        <div className="cntr3">
-                            <input className="hidden-xs-up3" id="cbx3" type="checkbox" checked={isNewLetterChecked} onChange={handleCheckboxChange3} />
-                            <label htmlFor="cbx3" className={`cbx3 ${isNewLetterChecked ? "checked3" : ""}`}></label>
-                        </div>
-                        <p onClick={handleCheckboxChange3}>내일스퀘어에서 발행하는 주간 뉴스레터 발송에 동의합니다.</p>
+                      <div className="cntr3">
+                        <input
+                          className="hidden-xs-up3"
+                          id="cbx3"
+                          type="checkbox"
+                          checked={isNewLetterChecked}
+                          onChange={handleCheckboxChange3}
+                        />
+                        <label
+                          htmlFor="cbx3"
+                          className={`cbx3 ${isNewLetterChecked ? "checked3" : ""}`}
+                        ></label>
+                      </div>
+                      <p onClick={handleCheckboxChange3}>
+                        내일스퀘어에서 발행하는 주간 뉴스레터 발송에 동의합니다.
+                      </p>
                     </div>
                   </td>
                 </tr>
@@ -464,7 +492,12 @@ export default function UserInfoComponent({ isOpen, data, isLoading, mutate }: a
                   <td className="addr">
                     <input type="text" value={addr1Input} onChange={handleChange} readOnly />
                     <button onClick={() => setAddrModalOpen(true)}>주소변경</button>
-                    <input type="text" value={addr2Input} placeholder="상세주소를 입력해 주세요" onChange={handleAddr2Change} />
+                    <input
+                      type="text"
+                      value={addr2Input}
+                      placeholder="상세주소를 입력해 주세요"
+                      onChange={handleAddr2Change}
+                    />
                   </td>
                 </tr>
                 <tr>
@@ -474,8 +507,17 @@ export default function UserInfoComponent({ isOpen, data, isLoading, mutate }: a
                   <td className="check">
                     <div className="option">
                       <div className="cntr">
-                        <input className="hidden-xs-up" id="cbx" type="checkbox" checked={isIdSaveChecked} onChange={handleCheckboxChange} />
-                        <label htmlFor="cbx" className={`cbx ${isIdSaveChecked ? "checked" : ""}`}></label>
+                        <input
+                          className="hidden-xs-up"
+                          id="cbx"
+                          type="checkbox"
+                          checked={isIdSaveChecked}
+                          onChange={handleCheckboxChange}
+                        />
+                        <label
+                          htmlFor="cbx"
+                          className={`cbx ${isIdSaveChecked ? "checked" : ""}`}
+                        ></label>
                       </div>
                       <p onClick={handleCheckboxChange}>[필수] 개인정보 수집 이용 동의</p>
                     </div>
@@ -494,7 +536,8 @@ export default function UserInfoComponent({ isOpen, data, isLoading, mutate }: a
                     {mustAgreeShow && (
                       <div className="pipp">
                         <p>
-                          (주)비즈마이닝 서비스 이용을 위해 아래와 같이 개인정보를 수집 및 이용합니다. 동의를 거부할 권리가 있으며, 동의 거부 시 회원정보 수정이
+                          (주)비즈마이닝 서비스 이용을 위해 아래와 같이 개인정보를 수집 및
+                          이용합니다. 동의를 거부할 권리가 있으며, 동의 거부 시 회원정보 수정이
                           불가합니다.
                         </p>
                         <table>
@@ -526,8 +569,17 @@ export default function UserInfoComponent({ isOpen, data, isLoading, mutate }: a
                   <td className="check">
                     <div className="option">
                       <div className="cntr2">
-                        <input className="hidden-xs-up2" id="cbx2" type="checkbox" checked={isKeepLoginChecked} onChange={handleCheckboxChange2} />
-                        <label htmlFor="cbx2" className={`cbx2 ${isKeepLoginChecked ? "checked2" : ""}`}></label>
+                        <input
+                          className="hidden-xs-up2"
+                          id="cbx2"
+                          type="checkbox"
+                          checked={isKeepLoginChecked}
+                          onChange={handleCheckboxChange2}
+                        />
+                        <label
+                          htmlFor="cbx2"
+                          className={`cbx2 ${isKeepLoginChecked ? "checked2" : ""}`}
+                        ></label>
                       </div>
                       <p onClick={handleCheckboxChange2}>[선택] 개인정보 수집 이용 동의</p>
                     </div>
@@ -561,8 +613,10 @@ export default function UserInfoComponent({ isOpen, data, isLoading, mutate }: a
                           <li>
                             4. 수신동의 거부 및 철회방법 안내
                             <p>
-                              본 동의는 거부하실 수 있습니다. 다만 거부 시 동의를 통해 제공 가능한 각종 혜택, 이벤트 안내를 받아보실 수 없습니다. 더 이상 상품•서비스
-                              영업, 홍보, 마케팅, 쿠폰 발송을 원하시지 않는 경우 회원정보수정 페이지에서 수신여부를 변경하실 수 있습니다.
+                              본 동의는 거부하실 수 있습니다. 다만 거부 시 동의를 통해 제공 가능한
+                              각종 혜택, 이벤트 안내를 받아보실 수 없습니다. 더 이상 상품•서비스
+                              영업, 홍보, 마케팅, 쿠폰 발송을 원하시지 않는 경우 회원정보수정
+                              페이지에서 수신여부를 변경하실 수 있습니다.
                             </p>
                           </li>
                         </ol>
@@ -616,7 +670,13 @@ export default function UserInfoComponent({ isOpen, data, isLoading, mutate }: a
             <h3>비밀번호 변경</h3>
             <div className="flex">
               <label htmlFor="originPW">기존 비밀번호</label>
-              <input type="password" id="originPw" placeholder="기존 비밀번호를 입력해 주세요." onChange={onChangePw0} value={pw0Input} />
+              <input
+                type="password"
+                id="originPw"
+                placeholder="기존 비밀번호를 입력해 주세요."
+                onChange={onChangePw0}
+                value={pw0Input}
+              />
             </div>
             <div className="flex">
               <label htmlFor="newPW">새 비밀번호</label>
@@ -636,7 +696,13 @@ export default function UserInfoComponent({ isOpen, data, isLoading, mutate }: a
             </div>
             <div className="flex">
               <label htmlFor="newPWRecom">새 비밀번호 확인</label>
-              <input value={pw2Input} onChange={handlePw2Change} type="password" id="password2" placeholder="새로운 비밀번호를 다시 한 번 입력해 주세요." />
+              <input
+                value={pw2Input}
+                onChange={handlePw2Change}
+                type="password"
+                id="password2"
+                placeholder="새로운 비밀번호를 다시 한 번 입력해 주세요."
+              />
               <p className="alert_msg2">{pw2Message}</p>
             </div>
             <div className="flex">

@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
 
-import Login from "@/components/loginpage/login"
-import "../../public/style/loginpage/loginpage.css"
+import Login from "@/components/loginpage/login";
+import "../../public/style/loginpage/loginpage.css";
 
 export default function Mypage() {
   return (

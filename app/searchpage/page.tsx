@@ -3,8 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import axios from "axios";
-import { SubmitHandler, useForm } from "react-hook-form";
-import SearchArea from "@/components/searchpage/searcharea";
+import { useForm } from "react-hook-form";
 import SearchAreaNew from "@/components/searchpage/searchareaNew";
 import SearchResult from "@/components/searchpage/searchresult";
 

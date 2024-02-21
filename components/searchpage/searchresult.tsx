@@ -5,15 +5,19 @@ import "../../public/style/searchpage/searchpage.css";
 import Link from "next/link";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faQuestion, faAngleRight, faAnglesLeft, faAnglesRight, faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import {
+  faQuestion,
+  faAngleRight,
+  faAnglesLeft,
+  faAnglesRight,
+  faChevronLeft,
+  faChevronRight,
+} from "@fortawesome/free-solid-svg-icons";
 
 import Image from "next/image";
 import Type01 from "@/public/img/type01.png";
 import Type02 from "@/public/img/type02.png";
-import Type03 from "@/public/img/type03.png";
 import Type04 from "@/public/img/type04.png";
-import Type05 from "@/public/img/type05.png";
-import Type06 from "@/public/img/type06.png";
 import Type07 from "@/public/img/type07.png";
 import Pagination from "react-js-pagination";
 
@@ -152,7 +156,13 @@ export default function SearchResult({
       return newToggleStates;
     });
     setToggleObj((prevObj: any) => {
-      const updatedObj = { ...prevObj, exception: { ...prevObj.exception, [keyword.split(",")[0]]: !prevObj.exception[keyword.split(",")[0]] } };
+      const updatedObj = {
+        ...prevObj,
+        exception: {
+          ...prevObj.exception,
+          [keyword.split(",")[0]]: !prevObj.exception[keyword.split(",")[0]],
+        },
+      };
       onClickToggle(updatedObj);
       return updatedObj;
     });
@@ -165,7 +175,13 @@ export default function SearchResult({
       return newToggleStates;
     });
     setToggleObj((prevObj: any) => {
-      const updatedObj = { ...prevObj, search: { ...prevObj.search, [keyword.split(",")[0]]: !prevObj.search[keyword.split(",")[0]] } };
+      const updatedObj = {
+        ...prevObj,
+        search: {
+          ...prevObj.search,
+          [keyword.split(",")[0]]: !prevObj.search[keyword.split(",")[0]],
+        },
+      };
       onClickToggle(updatedObj);
       return updatedObj;
     });
@@ -198,7 +214,11 @@ export default function SearchResult({
             <div className="keyword_result">
               <p>
                 포함 키워드
-                <em className="question" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+                <em
+                  className="question"
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
+                >
                   <FontAwesomeIcon icon={faQuestion} />
                 </em>
               </p>
@@ -214,7 +234,9 @@ export default function SearchResult({
                       <span
                         key={idx}
                         style={{ pointerEvents: `${loading ? "none" : "auto"}` }}
-                        className={`include_keyword ${toggleSearchStates[idx] === true ? "" : "toggle_on"}`}
+                        className={`include_keyword ${
+                          toggleSearchStates[idx] === true ? "" : "toggle_on"
+                        }`}
                         onClick={() => onClickToggleSearch(idx, item)}
                       >
                         {item.split(",")[0]}
@@ -229,7 +251,11 @@ export default function SearchResult({
             <div className="except_keyword_result">
               <p>
                 제외 키워드
-                <em className="question" onMouseEnter={handleMouseEnter2} onMouseLeave={handleMouseLeave2}>
+                <em
+                  className="question"
+                  onMouseEnter={handleMouseEnter2}
+                  onMouseLeave={handleMouseLeave2}
+                >
                   <FontAwesomeIcon icon={faQuestion} />
                 </em>
               </p>
@@ -244,7 +270,9 @@ export default function SearchResult({
                     <span
                       key={idx}
                       style={{ pointerEvents: `${loading ? "none" : "auto"}` }}
-                      className={`exclude_keyword ${toggleExecptionStates[idx] === true ? "" : "toggle_on"}`}
+                      className={`exclude_keyword ${
+                        toggleExecptionStates[idx] === true ? "" : "toggle_on"
+                      }`}
                       onClick={() => onClickToggleException(idx, item)}
                     >
                       {item.split(",")[0]}
@@ -293,7 +321,8 @@ export default function SearchResult({
           </div>
           <div className="top">
             <p>
-              검색된 공고 수 : <span>{data.totalCount}</span> 건 [{page}/{Math.ceil(data.totalCount / data.pageCount)}]
+              검색된 공고 수 : <span>{data.totalCount}</span> 건 [{page}/
+              {Math.ceil(data.totalCount / data.pageCount)}]
             </p>
 
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -391,8 +420,13 @@ export default function SearchResult({
                           <td className="info">
                             <div className="flex">
                               <Image src={divisionType} alt="일반"></Image>
-                              <a href={`/announcement/${item.list_id}/${item.name}`} target="_blank">
-                                <span dangerouslySetInnerHTML={{ __html: highlightKeywords(item.name) }} />
+                              <a
+                                href={`/announcement/${item.list_id}/${item.name}`}
+                                target="_blank"
+                              >
+                                <span
+                                  dangerouslySetInnerHTML={{ __html: highlightKeywords(item.name) }}
+                                />
                               </a>
                             </div>
                             <p>
@@ -402,13 +436,17 @@ export default function SearchResult({
                               <button className="table_scrap star_off"></button>
                             ) : (
                               <button
-                                className={`table_scrap ${item.bookMarkCheck ? "star_on" : "star_off"}`}
+                                className={`table_scrap ${
+                                  item.bookMarkCheck ? "star_on" : "star_off"
+                                }`}
                                 onClick={() => toggleStar(item.list_id, item.bookMarkCheck)}
                               ></button>
                             )}
                           </td>
                           <td className={`right ${item.price === "-" ? "none" : ""}`}>
-                            {item.price === "-" ? "공고 원문에서 확인" : `${Number(item.price).toLocaleString("ko-KR")}원`}
+                            {item.price === "-"
+                              ? "공고 원문에서 확인"
+                              : `${Number(item.price).toLocaleString("ko-KR")}원`}
                           </td>
                           {/* <td>
                           기타용역
@@ -419,7 +457,9 @@ export default function SearchResult({
                           <td>{item.announcement_agency}</td>
                           <td>{item.demand_agency}</td>
                           <td className={`${item.stateDetail === "-" ? "none" : ""}`}>
-                            {item.stateSummary === "-" ? "정보없음" : `${item.stateSummary} ${item.stateDetail}`}
+                            {item.stateSummary === "-"
+                              ? "정보없음"
+                              : `${item.stateSummary} ${item.stateDetail}`}
                           </td>
                           {/* <td>
                           <span className="red-color">{item.terminationDate}</span>
@@ -433,7 +473,8 @@ export default function SearchResult({
                           <td>{item.input_date}</td>
                           <td>{item.register_date}</td>
                           <td colSpan={2}>
-                            {item.end_date}&nbsp;&nbsp;&nbsp;&nbsp; / &nbsp;&nbsp;&nbsp;&nbsp;<span className="red-color">{item.qualified_date}</span>
+                            {item.end_date}&nbsp;&nbsp;&nbsp;&nbsp; / &nbsp;&nbsp;&nbsp;&nbsp;
+                            <span className="red-color">{item.qualified_date}</span>
                           </td>
                         </tr>
                       </>

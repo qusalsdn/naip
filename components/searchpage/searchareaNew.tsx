@@ -3,7 +3,7 @@
 import React, { KeyboardEvent, useState, useEffect } from "react";
 import "../../public/style/searchpage/searchpageNew.css";
 import axios from "axios";
-import useUser from "@/libs/useUser";
+import { useUser } from "@/libs/useUser";
 import { Refresh, Settings, InfoCircle, Xmark } from "iconoir-react";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";

@@ -5,7 +5,7 @@ import MyHeader from "@/components/mypage/myHeader";
 import UserInfoComponent from "@/components/mypage/content/userInfo";
 
 import "../../../public/style/mypage/mypage.css";
-import useUser from "@/libs/useUser";
+import { useUser } from "@/libs/useUser";
 import { useRouter } from "next/navigation";
 
 export default function UserInfo() {
@@ -37,7 +37,12 @@ export default function UserInfo() {
       {data?.ok && !isLoading && (
         <div id="wrap">
           <MyHeader isOpen={menufold} handleMenuClick={handleMenuClick}></MyHeader>
-          <UserInfoComponent isOpen={menufold} data={data} isLoading={isLoading} mutate={mutate}></UserInfoComponent>
+          <UserInfoComponent
+            isOpen={menufold}
+            data={data}
+            isLoading={isLoading}
+            mutate={mutate}
+          ></UserInfoComponent>
         </div>
       )}
     </>

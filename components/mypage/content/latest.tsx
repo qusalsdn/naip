@@ -9,10 +9,7 @@ import "../../../public/style/mypage/scrap.css";
 import Image, { StaticImageData } from "next/image";
 import Type01 from "@/public/img/type01.png";
 import Type02 from "@/public/img/type02.png";
-import Type03 from "@/public/img/type03.png";
 import Type04 from "@/public/img/type04.png";
-import Type05 from "@/public/img/type05.png";
-import Type06 from "@/public/img/type06.png";
 import Type07 from "@/public/img/type07.png";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

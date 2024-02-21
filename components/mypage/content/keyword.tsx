@@ -1,4 +1,4 @@
-import React, { useState, useEffect, FormEvent } from "react";
+import React, { useState, useEffect } from "react";
 
 import axios from "axios";
 import "../../../public/style/mypage/keyword.css";
@@ -91,16 +91,16 @@ export default function KeywordComponent({ isOpen }: any) {
     if (e.key === "Enter") e.preventDefault();
   };
 
-   //경고창 상태
-   const [alertOn, setAlertOn] = useState(false);
+  //경고창 상태
+  const [alertOn, setAlertOn] = useState(false);
 
-   const handleAlertOn = () => {
-       setAlertOn(true);
-   }
- 
-   const handleAlertOff = () => {
-     setAlertOn(false);
-  }
+  const handleAlertOn = () => {
+    setAlertOn(true);
+  };
+
+  const handleAlertOff = () => {
+    setAlertOn(false);
+  };
 
   return (
     <section id="keyword" className={`${isOpen ? "fold" : ""}`}>
@@ -121,7 +121,10 @@ export default function KeywordComponent({ isOpen }: any) {
               </div>
             ) : (
               <div className="interest_keyword active">
-                <textarea {...register("keyword")} placeholder="관심 키워드를 입력하세요.   입력형식) 키워드1, 키워드2, 키워드3...." />
+                <textarea
+                  {...register("keyword")}
+                  placeholder="관심 키워드를 입력하세요.   입력형식) 키워드1, 키워드2, 키워드3...."
+                />
               </div>
             )}
 
@@ -135,7 +138,9 @@ export default function KeywordComponent({ isOpen }: any) {
               </button>
             )}
           </div>
-          <div className="keyword_des">{reviseBtn ? <p>※ 등록하신 키워드입니다</p> : <p>수정 후 완료버튼을 클릭해 주세요.</p>}</div>
+          <div className="keyword_des">
+            {reviseBtn ? <p>※ 등록하신 키워드입니다</p> : <p>수정 후 완료버튼을 클릭해 주세요.</p>}
+          </div>
 
           <div className="keyword_content">
             <h3>등록 관심 기관</h3>
@@ -147,7 +152,10 @@ export default function KeywordComponent({ isOpen }: any) {
               </div>
             ) : (
               <div className="interest_keyword active">
-                <textarea {...register("institution")} placeholder="관심 기관을 입력하세요.  입력형식) 서울특별시, 경기도 수원시, 산림청, 질병관리본부...." />
+                <textarea
+                  {...register("institution")}
+                  placeholder="관심 기관을 입력하세요.  입력형식) 서울특별시, 경기도 수원시, 산림청, 질병관리본부...."
+                />
               </div>
             )}
 
@@ -161,7 +169,13 @@ export default function KeywordComponent({ isOpen }: any) {
               </button>
             )}
           </div>
-          <div className="keyword_des">{reviseBtn2 ? <p>※ 등록하신 관심 기관입니다</p> : <p>수정 후 완료버튼을 클릭해 주세요.</p>}</div>
+          <div className="keyword_des">
+            {reviseBtn2 ? (
+              <p>※ 등록하신 관심 기관입니다</p>
+            ) : (
+              <p>수정 후 완료버튼을 클릭해 주세요.</p>
+            )}
+          </div>
 
           <div className="keyword_content2">
             <h3>관심 금액</h3>
@@ -204,12 +218,10 @@ export default function KeywordComponent({ isOpen }: any) {
         </form>
         {alertOn && (
           <>
-            <div className="alert_keyword">
-                
-            </div>
+            <div className="alert_keyword"></div>
             <div className="alert_keyword_content">
-                  <p>저장 완료되었습니다.</p>
-                  <button onClick={handleAlertOff}>확인</button>
+              <p>저장 완료되었습니다.</p>
+              <button onClick={handleAlertOff}>확인</button>
             </div>
           </>
         )}

@@ -9,9 +9,7 @@ import logoFold from "@/public/img/logo_fold2.png";
 import MyMenuArrow from "@/public/img/myMenuArrow.png";
 import Myhome from "@/public/img/my_icon_01.png";
 import Scrap from "@/public/img/my_icon_02.png";
-import Recommend from "@/public/img/my_icon_03.png";
 import Condition from "@/public/img/my_icon_04.png";
-import Membership from "@/public/img/my_icon_05.png";
 import UserInfo from "@/public/img/my_icon_06.png";
 import Latest from "@/public/img/my_icon_07.png";
 import Keyword from "@/public/img/my_icon_08.png";
@@ -19,18 +17,11 @@ import Matching from "@/public/img/my_icon_09.png";
 
 import MyhomeOn from "@/public/img/myhome_on.png";
 import ScrapOn from "@/public/img/my_icon_02_on.png";
-import RecommendOn from "@/public/img/my_icon_03_on.png";
 import ConditionOn from "@/public/img/my_icon_04_on.png";
-import MembershipOn from "@/public/img/my_icon_05_on.png";
 import UserInfoOn from "@/public/img/my_icon_06_on.png";
 import LatestOn from "@/public/img/my_icon_07_on.png";
 import KeywordOn from "@/public/img/my_icon_08_on.png";
 import MatchingOn from "@/public/img/my_icon_09_on.png";
-
-
-
-
-import { useState, useEffect } from "react";
 
 export default function Myheader({ isOpen, handleMenuClick }: any) {
   const pathname = usePathname();
@@ -45,7 +36,11 @@ export default function Myheader({ isOpen, handleMenuClick }: any) {
       <div className="flex">
         <h1>
           <Link href="/" className="logo">
-            {isOpen ? <Image src={logoFold} alt="로고"></Image> : <Image src={logo} alt="로고" style={{position:'relative', left:'10px'}}></Image>}
+            {isOpen ? (
+              <Image src={logoFold} alt="로고"></Image>
+            ) : (
+              <Image src={logo} alt="로고" style={{ position: "relative", left: "10px" }}></Image>
+            )}
           </Link>
         </h1>
         <div className={`${isOpen ? "fold" : ""} menubtn`} onClick={handleMenuClick}>
@@ -63,7 +58,7 @@ export default function Myheader({ isOpen, handleMenuClick }: any) {
             <p>마이 홈</p>
           </Link>
         </li>
-        
+
         <li className={`${isOpen ? "fold" : ""}`}>
           <Link href="/mypage/scrap" className={isActive("/mypage/scrap")}>
             {isActive("/mypage/scrap") ? (
@@ -76,7 +71,7 @@ export default function Myheader({ isOpen, handleMenuClick }: any) {
         </li>
         <li className={`${isOpen ? "fold" : ""}`}>
           <Link href="/mypage/latest" className={isActive("/mypage/latest")}>
-           {isActive("/mypage/latest") ? (
+            {isActive("/mypage/latest") ? (
               <Image src={LatestOn} alt="키워드 알림 공고"></Image>
             ) : (
               <Image src={Latest} alt="키워드 알림 공고"></Image>
@@ -102,7 +97,7 @@ export default function Myheader({ isOpen, handleMenuClick }: any) {
         </li> */}
         <li className={`${isOpen ? "fold" : ""}`}>
           <Link href="/mypage/keyword" className={isActive("/mypage/keyword")}>
-          {isActive("/mypage/keyword") ? (
+            {isActive("/mypage/keyword") ? (
               <Image src={KeywordOn} alt="키워드 알림 공고"></Image>
             ) : (
               <Image src={Keyword} alt="키워드 알림 공고"></Image>
@@ -112,17 +107,17 @@ export default function Myheader({ isOpen, handleMenuClick }: any) {
         </li>
         <li className={`${isOpen ? "fold" : ""}`}>
           <Link href="/mypage/condition" className={isActive("/mypage/condition")}>
-          {isActive("/mypage/condition") ? (
+            {isActive("/mypage/condition") ? (
               <Image src={ConditionOn} alt="키워드 알림 공고"></Image>
             ) : (
               <Image src={Condition} alt="키워드 알림 공고"></Image>
             )}
             <p>검색 조건 관리</p>
           </Link>
-        </li>     
+        </li>
         <li className={`${isOpen ? "fold" : ""}`}>
           <Link href="/mypage/userinfo" className={isActive("/mypage/userinfo")}>
-          {isActive("/mypage/userinfo") ? (
+            {isActive("/mypage/userinfo") ? (
               <Image src={UserInfoOn} alt="키워드 알림 공고"></Image>
             ) : (
               <Image src={UserInfo} alt="키워드 알림 공고"></Image>

@@ -3,7 +3,7 @@
 import React, { KeyboardEvent, useState } from "react";
 import "../../public/style/searchpage/searchpage.css";
 import axios from "axios";
-import useUser from "@/libs/useUser";
+import { useUser } from "@/libs/useUser";
 
 export default function SearchArea({
   handleSubmit,
@@ -67,17 +67,40 @@ export default function SearchArea({
               </select>
               <input {...register("dateStart")} type="date" onChange={dateOnChange} />
               <span>~</span>
-              <input {...register("dateEnd")} className="last" type="date" onChange={dateOnChange} />
+              <input
+                {...register("dateEnd")}
+                className="last"
+                type="date"
+                onChange={dateOnChange}
+              />
               <label>
-                <input {...register("dateRadio")} type="radio" name="dateRadio" value="1month" onChange={onChange} />
+                <input
+                  {...register("dateRadio")}
+                  type="radio"
+                  name="dateRadio"
+                  value="1month"
+                  onChange={onChange}
+                />
                 최근 1개월
               </label>
               <label>
-                <input {...register("dateRadio")} type="radio" name="dateRadio" value="3month" onChange={onChange} />
+                <input
+                  {...register("dateRadio")}
+                  type="radio"
+                  name="dateRadio"
+                  value="3month"
+                  onChange={onChange}
+                />
                 최근 3개월
               </label>
               <label>
-                <input {...register("dateRadio")} type="radio" name="dateRadio" value="6month" onChange={onChange} />
+                <input
+                  {...register("dateRadio")}
+                  type="radio"
+                  name="dateRadio"
+                  value="6month"
+                  onChange={onChange}
+                />
                 최근 6개월
               </label>
               <label>
@@ -124,7 +147,11 @@ export default function SearchArea({
                   onKeyDown={handleKeyPress}
                   maxLength={30}
                 />
-                <button type="button" className="condition_save" onClick={onClickSearchFilterSaveBtn}>
+                <button
+                  type="button"
+                  className="condition_save"
+                  onClick={onClickSearchFilterSaveBtn}
+                >
                   {loading ? "저장중..." : "검색조건 저장"}
                 </button>
               </div>
@@ -147,7 +174,11 @@ export default function SearchArea({
             </div>
           )}
           <div className="searchpage_box">
-            <input {...register("searchKeyword")} type="search" placeholder="키워드로 검색해보세요 (여러 개 입력 시 콤마(,)로 구분)" />
+            <input
+              {...register("searchKeyword")}
+              type="search"
+              placeholder="키워드로 검색해보세요 (여러 개 입력 시 콤마(,)로 구분)"
+            />
             <div className="condition_select">
               <label>
                 <input {...register("condition")} type="radio" name="condition" value="or" />
@@ -177,7 +208,11 @@ export default function SearchArea({
           {/* {detailSearchVisible && ( */}
 
           <div className="searchDetail">
-            <input {...register("exceptionKeyword")} type="search" placeholder="제외키워드를 입력하세요 (여러 개 입력 시 콤마(,)로 구분, OR 조건 검색)" />
+            <input
+              {...register("exceptionKeyword")}
+              type="search"
+              placeholder="제외키워드를 입력하세요 (여러 개 입력 시 콤마(,)로 구분, OR 조건 검색)"
+            />
             <select {...register("sourceSelect")} className="select_agency sa1">
               <option value="">출처기관을 선택해 주세요.</option>
               <option value="">전체</option>
@@ -193,7 +228,12 @@ export default function SearchArea({
               <option value="public">공고기관</option>
               <option value="demand">수요기관</option>
             </select>
-            <input {...register("announcementSelectKeyword")} type="search" placeholder="공고/수요기관을 입력하세요" className="sa3" />
+            <input
+              {...register("announcementSelectKeyword")}
+              type="search"
+              placeholder="공고/수요기관을 입력하세요"
+              className="sa3"
+            />
           </div>
 
           <div>
