@@ -52,14 +52,15 @@ export default function SearchAreaNew({
             searchFilter[key] === "true" ? setValue(key, true) : setValue(key, false);
           } else if (key === "conditionAndOr") {
             setValue("condition", searchFilter[key]);
+            handleCondtionChecked(searchFilter[key]);
           } else if (key === "sourceSelect") {
             if (searchFilter[key] !== "sourceSelectAll") {
               searchFilter[key].split(",").forEach((id: any) => handleButtonClick(id));
-            }
+            } else handleButtonClick(searchFilter[key]);
           } else if (key === "announcementType") {
             if (searchFilter[key] !== "typeAll") {
               searchFilter[key].split(",").forEach((id: any) => handleButtonClick2(id));
-            }
+            } else handleButtonClick2(searchFilter[key]);
           } else if (key === "amountStart") {
             setVal1((prevValue: any) => {
               for (const markerKey in markers) {

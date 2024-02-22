@@ -59,7 +59,7 @@ type DataType = {
 export default function SearchPage() {
   const { handleSubmit, register, setValue, getValues, reset } = useForm<FormType>({
     defaultValues: {
-      dateRadio: "dateAll",
+      dateRadio: "",
       applicable: false,
       bidSelect: "bidEnd",
       dateStart: "",
@@ -166,6 +166,7 @@ export default function SearchPage() {
         setData(res.data);
         setToggleExecptionStates(Array(res.data.exceptionKeywordArr.length).fill(true));
         setToggleSearchStates(Array(res.data.searchKeywordArr.length).fill(true));
+        handleCondtionChecked2("announcementAll");
         setLoading(false);
       });
   }, [params, setValue]);
@@ -374,7 +375,7 @@ export default function SearchPage() {
   const formReset = () => {
     reset();
     handleCondtionChecked("or");
-    handleCondtionChecked2("");
+    handleCondtionChecked2("announcementAll");
     handleButtonClick("sourceSelectAll");
     handleButtonClick2("typeAll");
     setVal1([0, 9]);

@@ -7,6 +7,7 @@ export async function POST(req: NextRequest) {
   const body = await req.json();
   const id = body.id;
   const filterName = body.filterName;
+  const dateRadio = body.dateRadio;
   const bidSelect = body.bidSelect;
   const dateStart = body.dateStart;
   const dateEnd = body.dateEnd;
@@ -14,6 +15,10 @@ export async function POST(req: NextRequest) {
   const sourceSelect = body.sourceSelect;
   const announcementSelect = body.announcementSelect;
   const announcementSelectKeyword = body.announcementSelectKeyword;
+  const location = body.location;
+  const announcementType = body.announcementType;
+  const amountStart = body.amountStart;
+  const amountEnd = body.amountEnd;
   let exceptionKeyword = body.exceptionKeyword;
   let searchKeyword = body.searchKeyword;
   const token = cookies().get("token")?.value;
@@ -44,7 +49,7 @@ export async function POST(req: NextRequest) {
       }
 
       const [results] = await connection.execute(
-        `update searchFilter set filterName='${filterName}', bidSelect='${bidSelect}', dateStart='${dateStart}', dateEnd='${dateEnd}', conditionAndOr='${conditionAndOr}', sourceSelect='${sourceSelect}', announcementSelect='${announcementSelect}', announcementSelectKeyword='${announcementSelectKeyword}', exceptionKeyword='${exceptionKeyword}', searchKeyword='${searchKeyword}' where id=${id} and uid=${userInfo[0].uid}`
+        `update searchFilter set filterName='${filterName}', dateRadio='${dateRadio}', bidSelect='${bidSelect}', dateStart='${dateStart}', dateEnd='${dateEnd}', conditionAndOr='${conditionAndOr}', sourceSelect='${sourceSelect}', announcementSelect='${announcementSelect}', announcementSelectKeyword='${announcementSelectKeyword}', location='${location}', announcementType='${announcementType}', amountStart='${amountStart}', amountEnd='${amountEnd}', exceptionKeyword='${exceptionKeyword}', searchKeyword='${searchKeyword}' where id=${id} and uid=${userInfo[0].uid}`
       );
       if (results.affectedRows === 1) {
         await connection.end();

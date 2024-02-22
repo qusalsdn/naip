@@ -54,7 +54,7 @@ export async function GET(req: NextRequest) {
     let query =
       "SELECT list_table_test.*, COALESCE(state_info.stateSummary, '-') AS stateSummary, COALESCE(state_info.stateDetail, '-') AS stateDetail, COALESCE(file_table.price, '-') AS price FROM list_table_test LEFT JOIN state_info ON list_table_test.state_id = state_info.stateId LEFT JOIN file_table ON list_table_test.name = file_table.name AND list_table_test.division = file_table.division";
     if (
-      (dateRadio !== "dateAll" && dateRadio !== "null") ||
+      (dateRadio && dateRadio !== "dateAll" && dateRadio !== "null") ||
       (applicable &&
         applicable !== "false" &&
         applicable !== "null" &&

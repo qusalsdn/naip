@@ -17,6 +17,7 @@ import { ArrowUpRight } from "iconoir-react";
 interface FilterType {
   id: number;
   filterName: string;
+  dateRadio: string;
   bidSelect: string;
   dateStart: string;
   dateEnd: string;
@@ -24,8 +25,12 @@ interface FilterType {
   sourceSelect: string;
   announcementSelect: string;
   announcementSelectKeyword: string;
-  searchKeyword: string;
+  location: string;
+  announcementType: string;
+  amountStart: string;
+  amountEnd: string;
   exceptionKeyword: string;
+  searchKeyword: string;
 }
 
 const fetcher = (url: string) =>
@@ -39,19 +44,24 @@ export default function ConditionComponent({ isOpen }: any) {
     isLoading,
     mutate,
   } = useSWR<FilterType[]>("/api/mypage/condition", fetcher);
-  const { register, handleSubmit, reset, setValue } = useForm({
+  const { register, handleSubmit, reset, setValue } = useForm<FilterType>({
     defaultValues: {
       id: 0,
       filterName: "",
+      dateRadio: "",
       bidSelect: "bidEnd",
       dateStart: "",
       dateEnd: "",
       conditionAndOr: "or",
-      sourceSelect: "",
-      announcementSelect: "",
+      sourceSelect: "sourceSelectAll",
+      announcementSelect: "announcementAll",
       announcementSelectKeyword: "",
-      searchKeyword: "",
+      location: "locationAll",
+      announcementType: "typeAll",
+      amountStart: "0원",
+      amountEnd: "100억원 이상",
       exceptionKeyword: "",
+      searchKeyword: "",
     },
   });
 
@@ -60,10 +70,17 @@ export default function ConditionComponent({ isOpen }: any) {
 
   const popUpBtn = () => {
     setCreateCondition(true);
+    handleCondtionChecked2("announcementAll");
     document.body.style.overflow = "hidden";
   };
 
   const closePopup = () => {
+    reset();
+    setChecked("");
+    setConditionChecked("or");
+    handleButtonClick("sourceSelectAll");
+    setConditionChecked2("announcementAll");
+    handleButtonClick2("typeAll");
     setCreateCondition(false);
     document.body.style.overflow = "auto";
     reset();
@@ -85,15 +102,31 @@ export default function ConditionComponent({ isOpen }: any) {
       setValue("dateStart", cardData[arrIndex].dateStart);
       setValue("dateEnd", cardData[arrIndex].dateEnd);
       setValue("conditionAndOr", cardData[arrIndex].conditionAndOr);
+      setConditionChecked(cardData[arrIndex].conditionAndOr);
       setValue("sourceSelect", cardData[arrIndex].sourceSelect);
+      cardData[arrIndex].sourceSelect.split(",").forEach((item) => {
+        handleButtonClick(item);
+      });
       setValue("announcementSelect", cardData[arrIndex].announcementSelect);
+      setConditionChecked2(cardData[arrIndex].announcementSelect);
       setValue("announcementSelectKeyword", cardData[arrIndex].announcementSelectKeyword);
+      setValue("location", cardData[arrIndex].location);
+      setValue("announcementType", cardData[arrIndex].announcementType);
+      cardData[arrIndex].announcementType.split(",").forEach((item) => handleButtonClick2(item));
+      setValue("amountStart", cardData[arrIndex].amountStart);
+      setValue("amountEnd", cardData[arrIndex].amountEnd);
       setValue("exceptionKeyword", cardData[arrIndex].exceptionKeyword);
       setValue("searchKeyword", cardData[arrIndex].searchKeyword);
     }
   };
 
   const closeReviseCondition = () => {
+    reset();
+    setChecked("");
+    setConditionChecked("or");
+    handleButtonClick("sourceSelectAll");
+    setConditionChecked2("announcementAll");
+    handleButtonClick2("typeAll");
     setReviseCondition(false);
     document.body.style.overflow = "auto";
     reset();
@@ -163,22 +196,85 @@ export default function ConditionComponent({ isOpen }: any) {
   };
 
   // 검색 조건 만들기
-  const onSubmitConditionCreate = (data: FilterType) => {
+  const onSubmitConditionCreate = (formData: FilterType) => {
+    let exceptionString = "";
+    if (formData.exceptionKeyword !== "") {
+      const splitExceptionArr = formData.exceptionKeyword.split(",");
+      let string = "";
+      splitExceptionArr.forEach((item: string) => {
+        if (item.trim() !== "") return (string += `${item},true/`);
+      });
+      exceptionString = string.slice(0, -1);
+      let exceptionKeywordArr = exceptionString.split("/");
+      exceptionKeywordArr = exceptionKeywordArr.map((item: string) => {
+        const splitArr = item.split(",");
+        return splitArr[0].trim() + `,${splitArr[1].trim()}`;
+      });
+      exceptionString = "";
+      exceptionKeywordArr.forEach((item: string) => {
+        exceptionString += `${item}/`;
+      });
+    }
+    let searchString = "";
+    if (formData.searchKeyword !== "") {
+      const splitExceptionArr = formData.searchKeyword.split(",");
+      let string = "";
+      splitExceptionArr.forEach((item: string) => {
+        if (item.trim() !== "") return (string += `${item},true/`);
+      });
+      searchString = string.slice(0, -1);
+      let searchKeywordArr = searchString.split("/");
+      searchKeywordArr = searchKeywordArr.map((item: string) => {
+        const splitArr = item.split(",");
+        return splitArr[0].trim() + `,${splitArr[1].trim()}`;
+      });
+      searchString = "";
+      searchKeywordArr.forEach((item: string) => {
+        searchString += `${item}/`;
+      });
+    }
+    let sourceSelect = "";
+    if (!buttonStates["sourceSelectAll"]) {
+      Object.keys(buttonStates).forEach((item) => {
+        if (buttonStates[item]) sourceSelect += `${item},`;
+      });
+      sourceSelect = sourceSelect.slice(0, -1);
+    } else sourceSelect = "sourceSelectAll";
+    let type = "";
+    if (!buttonStates2["typeAll"]) {
+      Object.keys(buttonStates2).forEach((item) => {
+        if (buttonStates2[item]) type += `${item},`;
+      });
+      type = type.slice(0, -1);
+    } else type = "typeAll";
+    formData.sourceSelect = sourceSelect;
+    formData.announcementType = type;
     axios
       .post("/api/mypage/condition/create", {
-        filterName: data.filterName,
-        bidSelect: data.bidSelect,
-        dateStart: data.dateStart,
-        dateEnd: data.dateEnd,
-        conditionAndOr: data.conditionAndOr,
-        sourceSelect: data.sourceSelect,
-        announcementSelect: data.announcementSelect,
-        announcementSelectKeyword: data.announcementSelectKeyword,
-        exceptionKeyword: data.exceptionKeyword,
-        searchKeyword: data.searchKeyword,
+        filterName: formData.filterName,
+        dateRadio: formData.dateRadio,
+        bidSelect: formData.bidSelect,
+        dateStart: formData.dateStart,
+        dateEnd: formData.dateEnd,
+        conditionAndOr: formData.conditionAndOr,
+        sourceSelect: formData.sourceSelect,
+        announcementSelect: formData.announcementSelect,
+        announcementSelectKeyword: formData.announcementSelectKeyword,
+        location: formData.location,
+        announcementType: formData.announcementType,
+        amountStart: formData.amountStart,
+        amountEnd: formData.amountEnd,
+        exceptionKeyword: formData.exceptionKeyword,
+        searchKeyword: formData.searchKeyword,
       })
       .then((res) => {
         if (res.data.ok) {
+          reset();
+          setChecked("");
+          setConditionChecked("or");
+          handleButtonClick("sourceSelectAll");
+          setConditionChecked2("announcementAll");
+          handleButtonClick2("typeAll");
           setCreateCondition(false);
           document.body.style.overflow = "auto";
           reset();
@@ -189,23 +285,86 @@ export default function ConditionComponent({ isOpen }: any) {
 
   // 검색조건 수정하기
   const [onClickFilterId, setonClickFilterId] = useState(0);
-  const onSubmitConditionUpdate = (data: FilterType) => {
+  const onSubmitConditionUpdate = (formData: FilterType) => {
+    let exceptionString = "";
+    if (formData.exceptionKeyword !== "") {
+      const splitExceptionArr = formData.exceptionKeyword.split(",");
+      let string = "";
+      splitExceptionArr.forEach((item: string) => {
+        if (item.trim() !== "") return (string += `${item},true/`);
+      });
+      exceptionString = string.slice(0, -1);
+      let exceptionKeywordArr = exceptionString.split("/");
+      exceptionKeywordArr = exceptionKeywordArr.map((item: string) => {
+        const splitArr = item.split(",");
+        return splitArr[0].trim() + `,${splitArr[1].trim()}`;
+      });
+      exceptionString = "";
+      exceptionKeywordArr.forEach((item: string) => {
+        exceptionString += `${item}/`;
+      });
+    }
+    let searchString = "";
+    if (formData.searchKeyword !== "") {
+      const splitExceptionArr = formData.searchKeyword.split(",");
+      let string = "";
+      splitExceptionArr.forEach((item: string) => {
+        if (item.trim() !== "") return (string += `${item},true/`);
+      });
+      searchString = string.slice(0, -1);
+      let searchKeywordArr = searchString.split("/");
+      searchKeywordArr = searchKeywordArr.map((item: string) => {
+        const splitArr = item.split(",");
+        return splitArr[0].trim() + `,${splitArr[1].trim()}`;
+      });
+      searchString = "";
+      searchKeywordArr.forEach((item: string) => {
+        searchString += `${item}/`;
+      });
+    }
+    let sourceSelect = "";
+    if (!buttonStates["sourceSelectAll"]) {
+      Object.keys(buttonStates).forEach((item) => {
+        if (buttonStates[item]) sourceSelect += `${item},`;
+      });
+      sourceSelect = sourceSelect.slice(0, -1);
+    } else sourceSelect = "sourceSelectAll";
+    let type = "";
+    if (!buttonStates2["typeAll"]) {
+      Object.keys(buttonStates2).forEach((item) => {
+        if (buttonStates2[item]) type += `${item},`;
+      });
+      type = type.slice(0, -1);
+    } else type = "typeAll";
+    formData.sourceSelect = sourceSelect;
+    formData.announcementType = type;
     axios
       .post("/api/mypage/condition/update", {
         id: onClickFilterId,
-        filterName: data.filterName,
-        bidSelect: data.bidSelect,
-        dateStart: data.dateStart,
-        dateEnd: data.dateEnd,
-        conditionAndOr: data.conditionAndOr,
-        sourceSelect: data.sourceSelect,
-        announcementSelect: data.announcementSelect,
-        announcementSelectKeyword: data.announcementSelectKeyword,
-        exceptionKeyword: data.exceptionKeyword,
-        searchKeyword: data.searchKeyword,
+        filterName: formData.filterName,
+        dateRadio: formData.dateRadio,
+        bidSelect: formData.bidSelect,
+        dateStart: formData.dateStart,
+        dateEnd: formData.dateEnd,
+        conditionAndOr: formData.conditionAndOr,
+        sourceSelect: formData.sourceSelect,
+        announcementSelect: formData.announcementSelect,
+        announcementSelectKeyword: formData.announcementSelectKeyword,
+        location: formData.location,
+        announcementType: formData.announcementType,
+        amountStart: formData.amountStart,
+        amountEnd: formData.amountEnd,
+        exceptionKeyword: formData.exceptionKeyword,
+        searchKeyword: formData.searchKeyword,
       })
       .then((res) => {
         if (res.data.ok) {
+          reset();
+          setChecked("");
+          setConditionChecked("or");
+          handleButtonClick("sourceSelectAll");
+          setConditionChecked2("announcementAll");
+          handleButtonClick2("typeAll");
           setReviseCondition(false);
           document.body.style.overflow = "auto";
           reset();
@@ -289,6 +448,110 @@ export default function ConditionComponent({ isOpen }: any) {
   const handleSelectOption2 = () => {
     setSelectOption(false);
     // value 값을 지우는 코드 추가
+  };
+
+  //출처 버튼 토글
+  const buttonData = [
+    { id: "sourceSelectAll", text: "전체" },
+    { id: "ntis", text: "국가과학기술지식정보서비스(NTIS)" },
+    { id: "madang", text: "기업마당" },
+    { id: "nara", text: "나라장터" },
+    { id: "iris", text: "범부처통합연구지원시스템(IRIS)" },
+    { id: "kdn", text: "기타 공기업" },
+  ];
+
+  const [buttonStates, setButtonStates] = useState(
+    buttonData.reduce((acc: any, button: any) => {
+      acc[button.id] = button.id === "sourceSelectAll";
+      return acc;
+    }, {})
+  );
+
+  const handleButtonClick = (button: any) => {
+    if (button === "sourceSelectAll") {
+      const updatedStates = Object.keys(buttonStates).reduce((acc: any, key: any) => {
+        acc[key] = key === "sourceSelectAll";
+        return acc;
+      }, {});
+      setButtonStates(updatedStates);
+    } else {
+      setButtonStates((prevStates: any) => ({
+        ...prevStates,
+        sourceSelectAll: false,
+        [button]: !prevStates[button],
+      }));
+    }
+  };
+
+  //타입 버튼 토글
+  const buttonData2 = [
+    { id: "typeAll", text: "전체" },
+    { id: "일반", text: "일반" },
+    { id: "긴급", text: "긴급" },
+    { id: "사전", text: "사전" },
+    { id: "재공고", text: "재공고" },
+  ];
+
+  const [buttonStates2, setButtonStates2] = useState(
+    buttonData2.reduce((acc: any, button: any) => {
+      acc[button.id] = button.id === "typeAll";
+      return acc;
+    }, {})
+  );
+
+  const handleButtonClick2 = (button: any) => {
+    if (button === "typeAll") {
+      const updatedStates2 = Object.keys(buttonStates2).reduce((acc: any, key: any) => {
+        acc[key] = key === "typeAll";
+        return acc;
+      }, {});
+      setButtonStates2(updatedStates2);
+    } else {
+      setButtonStates2((prevStates2: any) => ({
+        ...prevStates2,
+        typeAll: false,
+        [button]: !prevStates2[button],
+      }));
+    }
+  };
+
+  //커스텀 라디오 버튼
+  const [conditionChecked, setConditionChecked] = useState("or");
+  const handleCondtionChecked = (value: string) => {
+    setConditionChecked(value);
+  };
+
+  //커스텀 라디오 버튼2
+  const [conditionChecked2, setConditionChecked2] = useState("announcementAll");
+  const handleCondtionChecked2 = (value: string) => {
+    setConditionChecked2(value);
+  };
+
+  const [checked, setChecked] = useState("");
+  const calculationDate = (minusDate: number) => {
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = (date.getMonth() + 1).toString().padStart(2, "0");
+    const day = date.getDate().toString().padStart(2, "0");
+    const today = `${year}-${month}-${day}`;
+    const calculationDate = new Date(date);
+    calculationDate.setMonth(date.getMonth() - minusDate);
+    const fewMonthAgo = calculationDate.toLocaleDateString().split(".");
+    fewMonthAgo[1] = fewMonthAgo[1].slice(1).padStart(2, "0");
+    fewMonthAgo[2] = fewMonthAgo[2].slice(1).padStart(2, "0");
+    setValue("dateStart", `${fewMonthAgo[0]}-${fewMonthAgo[1]}-${fewMonthAgo[2]}`);
+    setValue("dateEnd", today);
+  };
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const radioBtnValue = e.target.value;
+    setChecked(radioBtnValue);
+    if (radioBtnValue === "1month") {
+      calculationDate(1);
+    } else if (radioBtnValue === "3month") {
+      calculationDate(3);
+    } else if (radioBtnValue === "6month") {
+      calculationDate(6);
+    }
   };
 
   return (
@@ -417,12 +680,14 @@ export default function ConditionComponent({ isOpen }: any) {
                         </div>
                         <div className="flex">
                           <h4>출처</h4>
-                          {item.sourceSelect === "ntis" && "국가과학기술지식정보서비스(NTIS)"}
-                          {item.sourceSelect === "madang" && "기업마당"}
-                          {item.sourceSelect === "nara" && "나라장터"}
-                          {item.sourceSelect === "iris" && "범부처통합연구지원시스템"}
-                          {item.sourceSelect === "kdn" && "한전KDN"}
-                          {item.sourceSelect === "" && "전체"}
+                          {item.sourceSelect === "sourceSelectAll"
+                            ? "전체"
+                            : item.sourceSelect.split(",").map((item: string) => {
+                                if (item === "ntis") return "국가과학기술지식정보서비스(NTIS), ";
+                                if (item === "madang") return "기업마당, ";
+                                if (item === "nara") return "나라장터, ";
+                                if (item === "iris") return "범부처통합연구지원시스템, ";
+                              })}
                         </div>
                         <div className="flex">
                           <h4>기관</h4>
@@ -493,8 +758,12 @@ export default function ConditionComponent({ isOpen }: any) {
                       <div className="condition_row conditiondate">
                         <label>날짜</label>
                         <div className="directSelect">
-                          <button onClick={handleSelectOption}>직접입력</button>
-                          <button onClick={handleSelectOption2}>최근기준</button>
+                          <button type="button" onClick={handleSelectOption}>
+                            직접입력
+                          </button>
+                          <button type="button" onClick={handleSelectOption2}>
+                            최근기준
+                          </button>
                         </div>
                         {selectOption ? (
                           <div className="selectDateOption">
@@ -515,19 +784,43 @@ export default function ConditionComponent({ isOpen }: any) {
                               <option value="bidStart">입찰시작일</option>
                             </select>
                             <label className="custom_radio_label">
-                              <input type="radio" name="condition" value="or" />
-                              <span className={`custom_radio checkedRadio`}></span>
-                              <p>최근 1개월</p>
+                              <input
+                                {...register("dateRadio")}
+                                type="radio"
+                                name="dateRadio"
+                                value="1month"
+                                onChange={onChange}
+                              />
+                              <span
+                                className={`custom_radio ${checked === "1month" && "checkedRadio"}`}
+                              ></span>
+                              최근 1개월
                             </label>
                             <label className="custom_radio_label">
-                              <input type="radio" name="condition" value="or" />
-                              <span className={`custom_radio`}></span>
-                              <p>최근 3개월</p>
+                              <input
+                                {...register("dateRadio")}
+                                type="radio"
+                                name="dateRadio"
+                                value="3month"
+                                onChange={onChange}
+                              />
+                              <span
+                                className={`custom_radio ${checked === "3month" && "checkedRadio"}`}
+                              ></span>
+                              최근 3개월
                             </label>
                             <label className="custom_radio_label">
-                              <input type="radio" name="condition" value="or" />
-                              <span className={`custom_radio`}></span>
-                              <p>최근 6개월</p>
+                              <input
+                                {...register("dateRadio")}
+                                type="radio"
+                                name="dateRadio"
+                                value="6month"
+                                onChange={onChange}
+                              />
+                              <span
+                                className={`custom_radio ${checked === "6month" && "checkedRadio"}`}
+                              ></span>
+                              최근 6개월
                             </label>
                           </div>
                         )}
@@ -537,49 +830,57 @@ export default function ConditionComponent({ isOpen }: any) {
 
                         <div className="form_line2">
                           <label className="custom_radio_label">
-                            <input type="radio" name="condition" value="or" />
-                            <span className={`custom_radio checkedRadio`}></span>
+                            <input
+                              {...register("conditionAndOr")}
+                              type="radio"
+                              name="conditionAndOr"
+                              value="or"
+                              onChange={() => handleCondtionChecked("or")}
+                              checked={conditionChecked === "or"}
+                            />
+                            <span
+                              className={`custom_radio ${
+                                conditionChecked === "or" ? "checkedRadio" : ""
+                              }`}
+                            ></span>
                             <p>입력 키워드 OR 조건 검색</p>
                           </label>
                           <label className="custom_radio_label">
-                            <input type="radio" name="condition" value="and" />
-                            <span className={`custom_radio`}></span>
+                            <input
+                              {...register("conditionAndOr")}
+                              type="radio"
+                              name="conditionAndOr"
+                              value="and"
+                              onChange={() => handleCondtionChecked("and")}
+                              checked={conditionChecked === "and"}
+                            />
+                            <span
+                              className={`custom_radio ${
+                                conditionChecked === "and" ? "checkedRadio" : ""
+                              }`}
+                            ></span>
                             <p>입력 키워드 AND 조건 검색</p>
                           </label>
                         </div>
                       </div>
-                      {/* 
-                클릭 했을 때 active라는 className이 들어가면 됨.
-                전체를 누르면 전체 빼고 전부 active빠져야함. 
-                전체를 제외한 나머지는 중복 클릭 가능    
-                */}
                       <div className="condition_row conditionSource">
                         <label>출처선택</label>
                         <div className="btnWrap">
-                          <button type="button" className="toggleBtn active">
-                            전체
-                          </button>
-                          <button type="button" className="toggleBtn">
-                            국가과학기술지식정보서비스(NTIS)
-                          </button>
-                          <button type="button" className="toggleBtn">
-                            기업마당
-                          </button>
-                          <button type="button" className="toggleBtn">
-                            나라장터
-                          </button>
-                          <button type="button" className="toggleBtn">
-                            범부처통합연구지원시스템(IRIS)
-                          </button>
-                          <button type="button" className="toggleBtn">
-                            기타 공기업
-                          </button>
+                          {buttonData.map((button: any) => (
+                            <button
+                              key={button.id}
+                              type="button"
+                              className={`toggleBtn ${buttonStates[button.id] ? "active" : ""}`}
+                              onClick={() => handleButtonClick(button.id)}
+                            >
+                              {button.text}
+                            </button>
+                          ))}
                         </div>
                       </div>
 
                       <div className="condition_row conditionAgency">
                         <label>기관선택</label>
-
                         <div className="form_line2">
                           <label className="custom_radio_label">
                             <input
@@ -587,8 +888,14 @@ export default function ConditionComponent({ isOpen }: any) {
                               type="radio"
                               name="announcementSelect"
                               value="announcementAll"
+                              onChange={() => handleCondtionChecked2("announcementAll")}
+                              checked={conditionChecked2 === "announcementAll"}
                             />
-                            <span className={`custom_radio checkedRadio`}></span>
+                            <span
+                              className={`custom_radio ${
+                                conditionChecked2 === "announcementAll" ? "checkedRadio" : ""
+                              }`}
+                            ></span>
                             <p>전체</p>
                           </label>
                           <label className="custom_radio_label">
@@ -597,8 +904,14 @@ export default function ConditionComponent({ isOpen }: any) {
                               type="radio"
                               name="announcementSelect"
                               value="public"
+                              onChange={() => handleCondtionChecked2("public")}
+                              checked={conditionChecked2 === "public"}
                             />
-                            <span className={`custom_radio`}></span>
+                            <span
+                              className={`custom_radio ${
+                                conditionChecked2 === "public" ? "checkedRadio" : ""
+                              }`}
+                            ></span>
                             <p>공고기관</p>
                           </label>
                           <label className="custom_radio_label">
@@ -607,8 +920,14 @@ export default function ConditionComponent({ isOpen }: any) {
                               type="radio"
                               name="announcementSelect"
                               value="demand"
+                              onChange={() => handleCondtionChecked2("demand")}
+                              checked={conditionChecked2 === "demand"}
                             />
-                            <span className={`custom_radio`}></span>
+                            <span
+                              className={`custom_radio ${
+                                conditionChecked2 === "demand" ? "checkedRadio" : ""
+                              }`}
+                            ></span>
                             <p>수요기관</p>
                           </label>
                           <input
@@ -619,11 +938,9 @@ export default function ConditionComponent({ isOpen }: any) {
                           />
                         </div>
                       </div>
-
                       <div className="condition_row location">
                         <label>소재지</label>
-
-                        <select>
+                        <select {...register("location")}>
                           <option value="locationAll">전국</option>
                           <option value="서울시">서울특별시</option>
                           <option value="부산시">부산광역시</option>
@@ -647,30 +964,46 @@ export default function ConditionComponent({ isOpen }: any) {
                       <div className="condition_row type">
                         <label>타입</label>
                         <div className="btnWrap">
-                          <button type="button" className="toggleBtn active">
-                            전체
-                          </button>
-                          <button type="button" className="toggleBtn">
-                            일반
-                          </button>
-                          <button type="button" className="toggleBtn">
-                            긴급
-                          </button>
-                          <button type="button" className="toggleBtn">
-                            사전
-                          </button>
-                          <button type="button" className="toggleBtn">
-                            재공고
-                          </button>
+                          {buttonData2.map((button: any) => (
+                            <button
+                              key={button.id}
+                              type="button"
+                              className={`toggleBtn ${buttonStates2[button.id] ? "active" : ""}`}
+                              onClick={() => handleButtonClick2(button.id)}
+                            >
+                              {button.text}
+                            </button>
+                          ))}
                         </div>
                       </div>
                       <div className="condition_row price">
                         <label>사업금액</label>
-                        <input type="text" placeholder="최소금액을 입력하세요." />
+                        <select {...register("amountStart")}>
+                          <option value="0원">0원</option>
+                          <option value="1천만원">1천만원</option>
+                          <option value="3천만원">3천만원</option>
+                          <option value="5천만원">5천만원</option>
+                          <option value="1억원">1억원</option>
+                          <option value="5억원">5억원</option>
+                          <option value="10억원">10억원</option>
+                          <option value="30억원">30억원</option>
+                          <option value="50억원">50억원</option>
+                          <option value="100억원 이상">100억원 이상</option>
+                        </select>
                         ~
-                        <input type="text" placeholder="최대금액을 입력하세요." />
+                        <select {...register("amountEnd")}>
+                          <option value="0원">0원</option>
+                          <option value="1천만원">1천만원</option>
+                          <option value="3천만원">3천만원</option>
+                          <option value="5천만원">5천만원</option>
+                          <option value="1억원">1억원</option>
+                          <option value="5억원">5억원</option>
+                          <option value="10억원">10억원</option>
+                          <option value="30억원">30억원</option>
+                          <option value="50억원">50억원</option>
+                          <option value="100억원 이상">100억원 이상</option>
+                        </select>
                       </div>
-
                       <div className="condition_row conditionConclude">
                         <label>검색 키워드</label>
                         <input
@@ -746,22 +1079,21 @@ export default function ConditionComponent({ isOpen }: any) {
                     <div className="condition_row conditionSource">
                       <label className="color conditionSource_label">출처</label>
                       <span>
-                        {cardData &&
-                          cardData[arrIndex].sourceSelect === "ntis" &&
-                          "국가과학기술지식정보서비스(NTIS)"}
-                        {cardData && cardData[arrIndex].sourceSelect === "madang" && "기업마당"}
-                        {cardData && cardData[arrIndex].sourceSelect === "nara" && "나라장터"}
-                        {cardData &&
-                          cardData[arrIndex].sourceSelect === "iris" &&
-                          "범부처통합연구지원시스템"}
-                        {cardData && cardData[arrIndex].sourceSelect === "kdn" && "한전KDN"}
-                        {cardData && cardData[arrIndex].sourceSelect === "" && "전체"}
+                        {cardData && cardData[arrIndex].sourceSelect === "sourceSelectAll"
+                          ? "전체"
+                          : cardData &&
+                            cardData[arrIndex].sourceSelect.split(",").map((item: string) => {
+                              if (item === "ntis") return "국가과학기술지식정보서비스(NTIS), ";
+                              else if (item === "madang") return "기업마당, ";
+                              else if (item === "nara") return "나라장터, ";
+                              else if (item === "iris") return "범부처통합연구지원시스템, ";
+                            })}
                       </span>
                     </div>
                     <div className="condition_row conditionAgency conditionAgency_detail">
                       <label className="color">기관</label>
                       <span>
-                        {cardData && cardData[arrIndex].announcementSelect !== ""
+                        {cardData && cardData[arrIndex].announcementSelect !== "announcementAll"
                           ? cardData[arrIndex].announcementSelect === "public"
                             ? "공고기관"
                             : "수요기관"
@@ -774,15 +1106,26 @@ export default function ConditionComponent({ isOpen }: any) {
                     </div>
                     <div className="condition_row">
                       <label className="color">소재지</label>
-                      <span>전국</span>
+                      <span>
+                        {cardData && cardData[arrIndex].location === "locationAll"
+                          ? "전국"
+                          : cardData && cardData[arrIndex].location}
+                      </span>
                     </div>
                     <div className="condition_row">
                       <label className="color">타입</label>
-                      <span>일반, 재공고</span>
+                      <span>
+                        {cardData && cardData[arrIndex].announcementType === "typeAll"
+                          ? "전체"
+                          : cardData && cardData[arrIndex].announcementType}
+                      </span>
                     </div>
                     <div className="condition_row">
                       <label className="color">사업금액</label>
-                      <span>0원 ~ 0원</span>
+                      <span>
+                        {cardData && cardData[arrIndex].amountStart} ~{" "}
+                        {cardData && cardData[arrIndex].amountEnd}
+                      </span>
                     </div>
 
                     <div className="condition_row conditionConclude">
@@ -853,13 +1196,35 @@ export default function ConditionComponent({ isOpen }: any) {
 
                         <div className="form_line2">
                           <label className="custom_radio_label">
-                            <input type="radio" name="condition" value="or" />
-                            <span className={`custom_radio checkedRadio`}></span>
+                            <input
+                              {...register("conditionAndOr")}
+                              type="radio"
+                              name="conditionAndOr"
+                              value="or"
+                              onChange={() => handleCondtionChecked("or")}
+                              checked={conditionChecked === "or"}
+                            />
+                            <span
+                              className={`custom_radio ${
+                                conditionChecked === "or" ? "checkedRadio" : ""
+                              }`}
+                            ></span>
                             <p>입력 키워드 OR 조건 검색</p>
                           </label>
                           <label className="custom_radio_label">
-                            <input type="radio" name="condition" value="and" />
-                            <span className={`custom_radio`}></span>
+                            <input
+                              {...register("conditionAndOr")}
+                              type="radio"
+                              name="conditionAndOr"
+                              value="and"
+                              onChange={() => handleCondtionChecked("and")}
+                              checked={conditionChecked === "and"}
+                            />
+                            <span
+                              className={`custom_radio ${
+                                conditionChecked === "and" ? "checkedRadio" : ""
+                              }`}
+                            ></span>
                             <p>입력 키워드 AND 조건 검색</p>
                           </label>
                         </div>
@@ -867,24 +1232,16 @@ export default function ConditionComponent({ isOpen }: any) {
                       <div className="condition_row conditionSource">
                         <label>출처선택</label>
                         <div className="btnWrap">
-                          <button type="button" className="toggleBtn active">
-                            전체
-                          </button>
-                          <button type="button" className="toggleBtn">
-                            국가과학기술지식정보서비스(NTIS)
-                          </button>
-                          <button type="button" className="toggleBtn">
-                            기업마당
-                          </button>
-                          <button type="button" className="toggleBtn">
-                            나라장터
-                          </button>
-                          <button type="button" className="toggleBtn">
-                            범부처통합연구지원시스템(IRIS)
-                          </button>
-                          <button type="button" className="toggleBtn">
-                            기타 공기업
-                          </button>
+                          {buttonData.map((button: any) => (
+                            <button
+                              key={button.id}
+                              type="button"
+                              className={`toggleBtn ${buttonStates[button.id] ? "active" : ""}`}
+                              onClick={() => handleButtonClick(button.id)}
+                            >
+                              {button.text}
+                            </button>
+                          ))}
                         </div>
                       </div>
                       <div className="condition_row conditionAgency">
@@ -896,8 +1253,14 @@ export default function ConditionComponent({ isOpen }: any) {
                               type="radio"
                               name="announcementSelect"
                               value="announcementAll"
+                              onChange={() => handleCondtionChecked2("announcementAll")}
+                              checked={conditionChecked2 === "announcementAll"}
                             />
-                            <span className={`custom_radio checkedRadio`}></span>
+                            <span
+                              className={`custom_radio ${
+                                conditionChecked2 === "announcementAll" ? "checkedRadio" : ""
+                              }`}
+                            ></span>
                             <p>전체</p>
                           </label>
                           <label className="custom_radio_label">
@@ -906,8 +1269,14 @@ export default function ConditionComponent({ isOpen }: any) {
                               type="radio"
                               name="announcementSelect"
                               value="public"
+                              onChange={() => handleCondtionChecked2("public")}
+                              checked={conditionChecked2 === "public"}
                             />
-                            <span className={`custom_radio`}></span>
+                            <span
+                              className={`custom_radio ${
+                                conditionChecked2 === "public" ? "checkedRadio" : ""
+                              }`}
+                            ></span>
                             <p>공고기관</p>
                           </label>
                           <label className="custom_radio_label">
@@ -916,8 +1285,14 @@ export default function ConditionComponent({ isOpen }: any) {
                               type="radio"
                               name="announcementSelect"
                               value="demand"
+                              onChange={() => handleCondtionChecked2("demand")}
+                              checked={conditionChecked2 === "demand"}
                             />
-                            <span className={`custom_radio`}></span>
+                            <span
+                              className={`custom_radio ${
+                                conditionChecked2 === "demand" ? "checkedRadio" : ""
+                              }`}
+                            ></span>
                             <p>수요기관</p>
                           </label>
                           <input
@@ -930,8 +1305,7 @@ export default function ConditionComponent({ isOpen }: any) {
                       </div>
                       <div className="condition_row location">
                         <label>소재지</label>
-
-                        <select>
+                        <select {...register("location")}>
                           <option value="locationAll">전국</option>
                           <option value="서울시">서울특별시</option>
                           <option value="부산시">부산광역시</option>
@@ -955,30 +1329,46 @@ export default function ConditionComponent({ isOpen }: any) {
                       <div className="condition_row type">
                         <label>타입</label>
                         <div className="btnWrap">
-                          <button type="button" className="toggleBtn active">
-                            전체
-                          </button>
-                          <button type="button" className="toggleBtn">
-                            일반
-                          </button>
-                          <button type="button" className="toggleBtn">
-                            긴급
-                          </button>
-                          <button type="button" className="toggleBtn">
-                            사전
-                          </button>
-                          <button type="button" className="toggleBtn">
-                            재공고
-                          </button>
+                          {buttonData2.map((button: any) => (
+                            <button
+                              key={button.id}
+                              type="button"
+                              className={`toggleBtn ${buttonStates2[button.id] ? "active" : ""}`}
+                              onClick={() => handleButtonClick2(button.id)}
+                            >
+                              {button.text}
+                            </button>
+                          ))}
                         </div>
                       </div>
                       <div className="condition_row price">
                         <label>사업금액</label>
-                        <input type="text" placeholder="최소금액을 입력하세요." />
+                        <select {...register("amountStart")}>
+                          <option value="0원">0원</option>
+                          <option value="1천만원">1천만원</option>
+                          <option value="3천만원">3천만원</option>
+                          <option value="5천만원">5천만원</option>
+                          <option value="1억원">1억원</option>
+                          <option value="5억원">5억원</option>
+                          <option value="10억원">10억원</option>
+                          <option value="30억원">30억원</option>
+                          <option value="50억원">50억원</option>
+                          <option value="100억원 이상">100억원 이상</option>
+                        </select>
                         ~
-                        <input type="text" placeholder="최대금액을 입력하세요." />
+                        <select {...register("amountEnd")}>
+                          <option value="0원">0원</option>
+                          <option value="1천만원">1천만원</option>
+                          <option value="3천만원">3천만원</option>
+                          <option value="5천만원">5천만원</option>
+                          <option value="1억원">1억원</option>
+                          <option value="5억원">5억원</option>
+                          <option value="10억원">10억원</option>
+                          <option value="30억원">30억원</option>
+                          <option value="50억원">50억원</option>
+                          <option value="100억원 이상">100억원 이상</option>
+                        </select>
                       </div>
-
                       <div className="condition_row conditionConclude">
                         <label>검색 키워드 입력</label>
                         <input
