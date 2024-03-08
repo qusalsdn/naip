@@ -52,13 +52,12 @@ export default function Footer() {
               </li> */}
             </ul>
             <Image src={Slogan} alt="slogan"></Image>
-            <Link href="#">개인정보처리방침</Link>
+            {/* <Link href="#">개인정보처리방침</Link> */}
           </div>
         </div>
         <div className="footer_bottom">
           <Image src={flogo} alt=""></Image>
           <div className="copyright">
-            <address>서울특별시 금천구 가산디지털2로 43-14(가산한화비즈메트로 2차), 1113호</address>
             <p>COPYRIGHT &copy; NAEILSQUARE, ALL RIGHTS RESERVED</p>
           </div>
           <div className="call">

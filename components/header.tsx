@@ -106,7 +106,7 @@ export default function Header() {
                 <li>
                   <Link href="/schedule">사업일정</Link>
                 </li>
-                {/* <li onMouseEnter={handleSubMenuEnter} onMouseLeave={handleSubMenuLeave}>
+                <li onMouseEnter={handleSubMenuEnter} onMouseLeave={handleSubMenuLeave}>
                   <Link href="/community/notice">고객센터</Link>
                   <ul className={`sub_menu ${isSubMenuOpen ? "active" : ""}`}>
                     <li>
@@ -116,7 +116,7 @@ export default function Header() {
                       <Link href="/community/faq">FAQ</Link>
                     </li>
                   </ul>
-                </li> */}
+                </li>
               </ul>
             </div>
           </div>
