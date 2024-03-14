@@ -27,15 +27,6 @@ export default function Myheader() {
             </li>
           </ul>
         </div>
-        <div className="myfooter_bottom">
-          <div>
-            <h4 className="myfooter_logo">
-              <Link href="/">
-                <Image src={logo} alt=""></Image>
-              </Link>
-            </h4>
-          </div>
-        </div>
       </div>
     </footer>
   );
