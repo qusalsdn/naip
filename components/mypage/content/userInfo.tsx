@@ -416,13 +416,13 @@ export default function UserInfoComponent({ isOpen, data, isLoading, mutate }: a
                       placeholder="'-' 빼고 숫자만 입력"
                       maxLength={11}
                     />
-                    <button
+                    {/*<button
                       type="button"
                       onClick={handlePhoneSentClick}
                       className={`${phoneValid && !isVertifyCodeSent ? "active" : ""}`}
                     >
                       재인증하기
-                    </button>
+                    </button>*/}
                     <p className="alert_msg">{phoneMessage}</p>
                     {isVertifyCodeSent && !isVerified && (
                       <div className="join_info">
