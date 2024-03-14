@@ -34,7 +34,6 @@ export default function Myheader() {
                 <Image src={logo} alt=""></Image>
               </Link>
             </h4>
-            <address>서울특별시 금천구 가산디지털2로 43-14(가산한화비즈메트로 2차), 1113호</address>
           </div>
         </div>
       </div>
